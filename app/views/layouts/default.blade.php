@@ -61,6 +61,20 @@
     </section>
 @stop
 
+@section('footer')
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-6">{{ date('Y') }}</div>
+            <div class="col-md-6 text-right">
+                <a href="http://emmet.com.br" target="_blank">
+                    {{ HTML::image('images/pianolab.png') }}
+                </a>
+            </div>
+        </div>
+    </div>
+@stop
+
 @section('scripts')
     @include('layouts.javascripts')
     @yield('javascripts')

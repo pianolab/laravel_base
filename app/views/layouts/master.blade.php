@@ -10,6 +10,8 @@
 
     @yield('container')
 
+    @yield('footer')
+
     @yield('scripts')
 </body>
 </html>
