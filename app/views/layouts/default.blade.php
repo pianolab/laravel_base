@@ -43,7 +43,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>{{ link_to('#sample', 'sample') }}</li>
+            <li>{{ link_to('#Jonh', 'Jonh') }}</li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -67,7 +67,7 @@
         <div class="row">
             <div class="col-md-6">{{ date('Y') }}</div>
             <div class="col-md-6 text-right">
-                <a href="http://emmet.com.br" target="_blank">
+                <a href="//pianolab.com.br" target="blank">
                     {{ HTML::image('images/pianolab.png') }}
                 </a>
             </div>
