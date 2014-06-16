@@ -907,6 +907,7 @@ button.close{padding:0;cursor:pointer;background:transparent;border:0;-webkit-ap
 form span.error,form span.valid{position:absolute;right:41px;top:5.5px;font-style:italic;padding:2px 8px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;z-index:9999;cursor:pointer}
 form span.error{background:#b94a48;color:#fff}
 form span.valid{display:inline-block;background:#7aba7b;color:#fff}
+body{padding-top:60px}
 #new-attachments tr .action{width:100px}
 #new-attachments td.preview img{width:75px}
 form .row{margin-bottom:17px}
