@@ -10,5 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::group(array('before' => 'auth'), function(){
+  Route::get('/', 'HomeController@index');
 
-Route::get('/', 'HomeController@index');
+  Route::get('/sign_out', 'SessionsController@sign_out');
+});
+
+Route::get('/sign_in', 'SessionsController@sign_in');
+Route::post('/authenticate', 'SessionsController@authenticate');
