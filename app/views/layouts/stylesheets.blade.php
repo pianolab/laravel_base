@@ -1,1 +1,1 @@
-{{ HTML::style('stylesheets/screen.css') }}
+{{ HTML::style('stylesheets/application.css') }}
