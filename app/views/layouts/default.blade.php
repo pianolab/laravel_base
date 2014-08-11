@@ -57,6 +57,10 @@
 @stop
 
 @section('container')
+    <div class="container">
+        @include('layouts.alerts')
+    </div>
+
     <section class="container">
         @yield('content')
     </section>

@@ -36,7 +36,7 @@ class EloquentPostRepository
                 return Redirect::route('posts.edit', $post->id)->with('success', 'Post was successfully saved');
             }
             else {
-                return Redirect::back()->withInput()->with('error', 'Data can\'t be saved, please try again');
+                return Redirect::back()->withInput()->with('danger', 'Data can\'t be saved, please try again');
             } # endif;
         }
         else {
@@ -52,7 +52,7 @@ class EloquentPostRepository
                 return Redirect::route('posts.edit', $post->id)->with('success', 'Post was successfully updated');
             }
             else {
-                return Redirect::back()->withInput()->with('error', 'Data can\'t be saved, please try again');
+                return Redirect::back()->withInput()->with('danger', 'Data can\'t be saved, please try again');
             } # endif;
         }
         else {
