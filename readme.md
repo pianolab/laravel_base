@@ -1,25 +1,79 @@
-## Laravel PHP Framework
+# Laravel PHP Framework Base
+Project base laravel Pianolab
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Instalando composer
+**Unix**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+```
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+```
+**Windows**
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+Baixe e instale [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe) ou siga as instruções do site [oficial](https://getcomposer.org/doc/00-intro.md#system-requirements)
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Clonando o projeto
+Clonando projeto como origin base. Para que futuramente possa pegar possiveis atualização
 
-## Official Documentation
+```
+git clone git@github.com:pianolab/laravel_base.git appname_apptype -o base
+```
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+Adicionando projeto ao repositório do projeto
 
-### Contributing To Laravel
+```
+git remote add origin git@bitbucket.org:pianolab/appname_apptype.git
+```
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+Quando estiver desenvolvendo use a branch  development. Quando a feature estiver terminada faça um merge com o master e faça o deploy. O importante é que na branch master esteja identica a servidor de produção.
 
-### License
+### Criando branch development
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+```
+git branch development
+```
+
+Trocando para a branch de desenvolvimento
+
+```
+git checkout development
+```
+
+Enviando código para o repositório
+
+```
+git push origin master && git push origin development
+```
+
+The master branch should be equal to the production server.
+
+_O branch master deve ser igual ao servidor de produção._
+
+### Configurando projeto
+Duplique o arquivo `app/config/development/database.php.default` e renomei-o para `app/config/development/database.php` e configure o banco de dados.
+
+```
+'mysql' => array(
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'laravel_base',
+    'username'  => 'root',
+    'password'  => 'raquel',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+)
+```
+
+### Configurando o banco
+Crie o banco de acordo com quer você colocou nas configurações acima e rode um:
+
+```
+php artisan migrate --seed
+```
+
+Para rodar o servidor do laravel rode um:
+
+```
+php artisan serve
+```
