@@ -1,3 +1,5 @@
 @section('content')
-    <h1>Home#index</h1>
+    <h3>Home <small>index</small></h3>
+
+    Welcome to administrator!
 @stop

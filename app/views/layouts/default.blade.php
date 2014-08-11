@@ -26,24 +26,31 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="navbar-brand">Laravel Base</div>
+          <div class="navbar-brand">Administrator</div>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active">{{ link_to('/', 'home') }}</li>
+            <li>{{ link_to('/', 'Dashboard') }}</li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
+                <li class="dropdown-header">Posts</li>
+                <li>{{ link_to('/posts/create', '+ Add') }}</li>
+                <li>{{ link_to('/posts', 'See all') }}</li>
                 <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">One more separated link</a></li>
+                <li class="dropdown-header">Categories</li>
+                <li><a href="#link-sample">Sample</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>{{ link_to('#Jonh', 'Jonh') }}</li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ url('sign_in') }}"> </a></li>
+                <li>{{ link_to('/sign_out', 'Sign out!') }}</li>
+              </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -51,11 +58,6 @@
 @stop
 
 @section('container')
-    <?php /*
-    <div class="container">
-        @include('layouts.messages')
-    </div>
-    */ ?>
     <section class="container">
         @yield('content')
     </section>
