@@ -45,10 +45,10 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i class="fa fa-angle-down"></i></a>
-              <ul class="dropdown-menu">
-                <li>{{ link_to('/sign_out', ' Sign out!', ['class' => 'fa fa-power-off']) }}</li>
-              </ul>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url('/sign_out') }}"><i class="fa fa-power-off"></i> Sign out!</a></li>
+                </ul>
             </li>
           </ul>
         </div><!--/.nav-collapse -->
