@@ -32,7 +32,7 @@
           <ul class="nav navbar-nav">
             <li>{{ link_to('/', 'Dashboard') }}</li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts <i class="fa fa-angle-down"></i></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Posts</li>
                 <li>{{ link_to('/posts/create', '+ Add') }}</li>
@@ -45,10 +45,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i class="fa fa-angle-down"></i></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ url('sign_in') }}"> </a></li>
-                <li>{{ link_to('/sign_out', 'Sign out!') }}</li>
+                <li>{{ link_to('/sign_out', ' Sign out!', ['class' => 'fa fa-power-off']) }}</li>
               </ul>
             </li>
           </ul>
