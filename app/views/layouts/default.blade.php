@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <link rel="shortcut icon" href="images/favicon.ico" />
 
-    <title>Laravel Base</title>
+    <title>{{ Config::get('app.name') }}</title>
 @stop
 
 @section('styles')

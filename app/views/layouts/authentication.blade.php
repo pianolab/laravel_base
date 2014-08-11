@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Laravel Base</title>
+  <title>{{ Config::get('app.name') }}</title>
 
   {{ HTML::style('stylesheets/application.css'); }}
   <style>
