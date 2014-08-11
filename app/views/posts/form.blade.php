@@ -1,3 +1,6 @@
+@section('javascripts')
+    {{ HTML::script('javascripts/modules/posts.js') }}
+@stop
 {{ Form::model($post, $form_attributes) }}
     <div class="row form-group">
         <div class="col-md-8">
@@ -6,7 +9,7 @@
         </div>
         <div class="col-md-4">
             {{ Form::label('published_at') }}
-            {{ Form::text('published_at', null, [ 'class' => 'form-control' ]) }}
+            {{ Form::text('published_at', null, [ 'class' => 'form-control datepicker', 'alt' => 'date-us' ]) }}
         </div>
     </div>
     <div class="row form-group">
