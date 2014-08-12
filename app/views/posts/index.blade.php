@@ -18,7 +18,7 @@
                     <th>{{ $post->title }}</th>
                     <th>{{ $post->published_at }}</th>
                     <th class="text-right">
-                        {{ link_to_route('posts.edit', '', $post->id, [ 'class' => 'btn btn-sm btn-warning fa fa-edit' ]) }}
+                        {{ link_to_route('posts.edit', '', $post->id, [ 'class' => 'btn btn-sm btn-warning fa fa-edit', 'data-title' => 'Edit' ]) }}
                         {{ link_to('#', '', [ 'data-target' => '#delete-post-' . $post->id, 'data-toggle' => 'modal', 'data-title' => 'Delete', 'class' => 'btn btn-sm btn-danger fa fa-trash-o' ]) }}
                     </th>
                     <!-- Modal -->
