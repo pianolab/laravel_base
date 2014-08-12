@@ -17,7 +17,28 @@
                 <tr>
                     <th>{{ $post->title }}</th>
                     <th>{{ $post->published_at }}</th>
-                    <th>{{ link_to_route('posts.edit', 'edit', $post->id) }}</th>
+                    <th class="text-right">
+                        {{ link_to_route('posts.edit', '', $post->id, [ 'class' => 'btn btn-sm btn-warning fa fa-edit' ]) }}
+                        {{ link_to('#', '', [ 'data-target' => '#delete-post-' . $post->id, 'data-toggle' => 'modal', 'data-title' => 'Delete', 'class' => 'btn btn-sm btn-danger fa fa-trash-o' ]) }}
+                    </th>
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete-post-{{ $post->id }}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h3 class="modal-title modal-title-delete">Atention!</h3>
+                                </div>
+                                <div class="modal-body">Are sure you want to delete?</div>
+                                <div class="modal-footer">
+                                    {{ Form::open(['route' => [ 'posts.update', $post->id ], 'method' => 'delete']) }}
+                                        <button type="button" class="btn btn-default btn-modal-close" data-dismiss="modal">cancel</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    {{ Form::close() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </tr>
             @endforeach
             </tbody>
