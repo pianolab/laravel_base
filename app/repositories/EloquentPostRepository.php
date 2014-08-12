@@ -7,7 +7,7 @@ class EloquentPostRepository
         $return = false;
 
         $rules = [
-            'title' => 'required|max:255|unique:posts' . ($id ? ',title,' . $id : null),
+            'title' => 'required|max:255|unique:posts,title,' . ($id ?: 'NULL') . ',id,deleted_at,NULL',
             'content' => 'required',
             'published_at' => 'required|date',
         ];
@@ -20,7 +20,7 @@ class EloquentPostRepository
 
     public function all($perpage = 15)
     {
-        return DB::table('posts')->paginate(15);
+        return Post::paginate($perpage);
     }
 
     public function find($id)
@@ -57,6 +57,16 @@ class EloquentPostRepository
         }
         else {
             return Redirect::back()->withErrors($this->errors)->withInput();
+        } # endif;
+    }
+
+    public function destroy($id)
+    {
+        if (Post::find($id)->delete()) {
+            return Redirect::route('posts.index')->with('success', 'Post was successfully deleted');
+        }
+        else {
+            return Redirect::back()->withInput()->with('error', 'Post can\'t be deleted, please try again');
         } # endif;
     }
 }
