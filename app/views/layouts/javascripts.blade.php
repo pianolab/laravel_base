@@ -5,6 +5,7 @@
 {{ HTML::script('javascripts/vendors/bootstrap/bootstrap.js') }}
 
 {{ HTML::script('javascripts/vendors/bootstrap/bootstrap-datepicker.js') }}
+{{ HTML::script('javascripts/vendors/bootstrap/jquery.pagedown-bootstrap.combined.js') }}
 
 {{ HTML::script('javascripts/vendors/meiomask/meiomask.min.js') }}
 {{ HTML::script('javascripts/vendors/meiomask/meiomask.init.js') }}

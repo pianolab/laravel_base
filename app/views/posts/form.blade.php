@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="row form-group">
-        <div class="col-md-12">
+        <div class="col-md-12 markdown-editor">
             {{ Form::label('content') }}
             {{ Form::textarea('content', null, [ 'class' => 'form-control' ]) }}
         </div>
