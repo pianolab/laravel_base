@@ -2436,14 +2436,14 @@ else
             form.appendChild(input);
 
             // The ok button
-            var okButton = doc.createElement("button");
+            var okButton = doc.createElement("a");
             okButton.className = "btn btn-primary";
             okButton.type = "button";
             okButton.onclick = function () { return close(false); };
             okButton.innerHTML = "OK";
 
             // The cancel button
-            var cancelButton = doc.createElement("button");
+            var cancelButton = doc.createElement("a");
             cancelButton.className = "btn btn-danger";
             cancelButton.type = "button";
             cancelButton.onclick = function () { return close(true); };
@@ -2687,7 +2687,7 @@ else
             buttonRow = buttonBar.appendChild(buttonRow);
 
             var makeButton = function (id, title, icon, textOp, group) {
-                var button = document.createElement("button");
+                var button = document.createElement("a");
                 button.className = "btn btn-default";
                 var buttonImage = document.createElement("i");
                 buttonImage.className = icon;
@@ -2751,7 +2751,7 @@ else
             if (helpOptions) {
                 group5 = makeGroup(5);
                 group5.className = group5.className + " pull-right";
-                var helpButton = document.createElement("button");
+                var helpButton = document.createElement("a");
                 var helpButtonImage = document.createElement("i");
                 helpButtonImage.className = "fa fa-question";
                 helpButton.appendChild(helpButtonImage);

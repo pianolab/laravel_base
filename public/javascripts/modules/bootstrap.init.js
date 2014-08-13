@@ -14,25 +14,7 @@ var Twbs = {
     },
 
     pagedown: function () {
-        $("textarea.markdown-editor, .markdown-editor textarea").pagedownBootstrap({
-            'sanitize': false,
-            'help': function () { alert("Do you need help?"); },
-            'hooks': [
-                {
-                    'event': 'preConversion',
-                    'callback': function (text) {
-                        return text.replace(/\b(a\w*)/gi, "*$1*");
-                    }
-                },
-                {
-                    'event': 'plainLinkText',
-                    'callback': function (url) {
-                        return url.replace(/^https?:\/\//, "");
-                    }
-                }
-            ]
-        });
-
+        $("textarea.markdown-editor, .markdown-editor textarea").pagedownBootstrap();
         $('.wmd-preview').addClass('well');
     },
 };
