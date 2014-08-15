@@ -33,10 +33,10 @@ class EloquentPostRepository
         if ($this->isValid($data)) {
             $post = new Post($data);
             if ($post->save()) {
-                return Redirect::route('posts.edit', $post->id)->with('success', 'Post was successfully saved');
+                return Redirect::route('posts.edit', $post->id)->with('success', t('Post was successfully saved'));
             }
             else {
-                return Redirect::back()->withInput()->with('danger', 'Data can\'t be saved, please try again');
+                return Redirect::back()->withInput()->with('danger', t('Data can\'t be saved, please try again'));
             } # endif;
         }
         else {
@@ -49,10 +49,10 @@ class EloquentPostRepository
         if ($this->isValid($data, $id)) {
             $post = Post::find($id);
             if ($post->update($data)) {
-                return Redirect::route('posts.edit', $post->id)->with('success', 'Post was successfully updated');
+                return Redirect::route('posts.edit', $post->id)->with('success', t('Post was successfully updated'));
             }
             else {
-                return Redirect::back()->withInput()->with('danger', 'Data can\'t be saved, please try again');
+                return Redirect::back()->withInput()->with('danger', t('Data can\'t be saved, please try again'));
             } # endif;
         }
         else {
@@ -63,10 +63,10 @@ class EloquentPostRepository
     public function destroy($id)
     {
         if (Post::find($id)->delete()) {
-            return Redirect::route('posts.index')->with('success', 'Post was successfully deleted');
+            return Redirect::route('posts.index')->with('success', t('Post was successfully deleted'));
         }
         else {
-            return Redirect::back()->withInput()->with('error', 'Post can\'t be deleted, please try again');
+            return Redirect::back()->withInput()->with('error', t('Post can\'t be deleted, please try again'));
         } # endif;
     }
 }

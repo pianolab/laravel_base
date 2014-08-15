@@ -20,26 +20,26 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">Toggle</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="navbar-brand">Administrator</div>
+          <div class="navbar-brand">{{ t('Administrator') }}</div>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li>{{ link_to('/', 'Dashboard') }}</li>
+            <li>{{ link_to('/', t('Dashboard')) }}</li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts <i class="fa fa-angle-down"></i></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ t('Posts') }} <i class="fa fa-angle-down"></i></b></a>
               <ul class="dropdown-menu">
-                <li class="dropdown-header">Posts</li>
-                <li>{{ link_to('/posts/create', '+ Add') }}</li>
-                <li>{{ link_to('/posts', 'See all') }}</li>
+                <li class="dropdown-header">{{ t('Posts') }}</li>
+                <li>{{ link_to('/posts/create', t('+ Add')) }}</li>
+                <li>{{ link_to('/posts', t('See all')) }}</li>
                 <li class="divider"></li>
-                <li class="dropdown-header">Categories</li>
-                <li><a href="#link-sample">Sample</a></li>
+                <li class="dropdown-header">{{ t('Categories') }}</li>
+                <li><a href="#link-sample">{{ t('Sample') }}</a></li>
               </ul>
             </li>
           </ul>
@@ -47,7 +47,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ url('/sign_out') }}"><i class="fa fa-power-off"></i> Sign out!</a></li>
+                    <li><a href="{{ url('/sign_out') }}"><i class="fa fa-power-off"></i> {{ t('Sign out!') }}</a></li>
                 </ul>
             </li>
           </ul>

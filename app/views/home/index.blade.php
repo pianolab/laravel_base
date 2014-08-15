@@ -1,5 +1,5 @@
 @section('content')
-    <h3>Home <small>index</small></h3>
+    <h3>{{ t('Home') }} <small>{{ t('index') }}</small></h3>
 
-    Welcome to administrator!
+    {{ t('Welcome to administrator') }}!
 @stop

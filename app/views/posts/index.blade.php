@@ -1,14 +1,14 @@
 @section('content')
-    <h3>Posts <small>listing</small></h3>
+    <h3>{{ t('Posts') }} <small>{{ t('listing') }}</small></h3>
 
     @if ($posts->isEmpty())
-        No post yet, click {{ link_to_route('posts.create', 'here') }} to add
+        {{ t('notfound', [ 'model' => 'post', 'link' => link_to_route('posts.create', 'here') ]) }}
     @else
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Published at</th>
+                    <th>{{ t('Title') }}</th>
+                    <th>{{ t('Published at') }}</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -26,14 +26,14 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h3 class="modal-title modal-title-delete">Atention!</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                    <h3 class="modal-title modal-title-delete">{{ t('Atention') }}!</h3>
                                 </div>
-                                <div class="modal-body">Are sure you want to delete?</div>
+                                <div class="modal-body">{{ t('Are sure you want to delete?') }}</div>
                                 <div class="modal-footer">
                                     {{ Form::open(['route' => [ 'posts.update', $post->id ], 'method' => 'delete']) }}
-                                        <button type="button" class="btn btn-default btn-modal-close" data-dismiss="modal">cancel</button>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-default btn-modal-close" data-dismiss="modal">{{ t('cancel') }}</button>
+                                        <button type="submit" class="btn btn-danger">{{ t('delete') }}</button>
                                     {{ Form::close() }}
                                 </div>
                             </div>

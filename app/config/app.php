@@ -1,8 +1,9 @@
 <?php
 
 return array(
+    # Name
     'name' => 'Laravel Base',
-
+    'lang_file_default' => 'application',
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

@@ -3,7 +3,7 @@
         <button data-dismiss="alert" class="close" type="button">
             <i class="fa fa-times"></i>
         </button>
-        <strong>Error!</strong></br>
+        <strong>{{ t('Error') }}!</strong></br>
         @foreach ($errors->all() as $error)
             {{ $error }}</br>
         @endforeach
@@ -22,7 +22,7 @@ if (Session::has('warning')) $alerts['warning'] = Session::get('warning'); ?>
             <button data-dismiss="alert" class="close" type="button">
                 <i class="fa fa-times"></i>
             </button>
-            <strong>Success! </strong>{{ $message }}
+            <strong>{{ t('Success') }}! </strong>{{ $message }}
         </div>
     @endforeach
 @endif
