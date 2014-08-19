@@ -18,7 +18,7 @@ class AttachmentsController extends \BaseController
             $attachment->type = $file->getMimeType();
             $attachment->size = $file->getSize();
 
-            $destination_path = public_path() . DIRECTORY_SEPARATOR . 'upload' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $attachment->parent_id;
+            $destination_path = public_path() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $attachment->parent_id;
             $attachment->file_name = $attachment->unique_name() . '.' . $file->getClientOriginalExtension();
 
             $is_upload = $file->move($destination_path, $attachment->file_name);
