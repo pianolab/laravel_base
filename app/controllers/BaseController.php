@@ -16,4 +16,9 @@ class BaseController extends Controller
             $this->layout = View::make($this->layout);
         }
     }
+
+    public function setLayout($layout)
+    {
+        return $this->layout = View::make($layout);
+    }
 }

@@ -2,6 +2,11 @@ var Post = {
 
   init: function () {
     this.validations();
+    this.uploadify();
+  },
+
+  uploadify: function () {
+    Uploadify.upload('#attachment_post', 'post');
   },
 
   validations: function () {
