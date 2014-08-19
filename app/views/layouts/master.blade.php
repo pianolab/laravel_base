@@ -13,5 +13,7 @@
     @yield('footer')
 
     @yield('scripts')
+
+    @yield('modals')
 </body>
 </html>
