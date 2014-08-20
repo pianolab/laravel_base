@@ -49,8 +49,10 @@
     </div>
 {{ Form::close() }}
 
+<div id="modal">
 @if ($post->images)
 @foreach ($post->images as $key => $attachment)
     @include('attachments.modal', [ 'attachment' => $attachment ])
 @endforeach
 @endif
+</div>

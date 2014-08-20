@@ -13,8 +13,8 @@
 {{ HTML::script('javascripts/vendors/validate/jquery.validate.js') }}
 {{ HTML::script('javascripts/vendors/validate/jquery.validate.init.js') }}
 
-{{ HTML::script('javascripts/vendors/uploadifive/jquery.uploadify.js') }}
-{{ HTML::script('javascripts/vendors/uploadifive/jquery.uploadify.init.js') }}
+{{ HTML::script('javascripts/vendors/uploadifive/jquery.uploadifive.js') }}
+{{ HTML::script('javascripts/vendors/uploadifive/jquery.uploadifive.init.js') }}
 
 {{ HTML::script('javascripts/vendors/modernizr.js') }}
 

@@ -6,7 +6,7 @@ var Post = {
   },
 
   uploadify: function () {
-    Uploadify.upload('#attachment_post', 'post');
+    Uploadifive.upload('#attachment_post');
   },
 
   validations: function () {
