@@ -27,8 +27,8 @@
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                <div class="wrap-uploadify">
-                    <div id="attachment_post" data-parent-id="{{ $post->id }}" data-parent-name="post" class="uploadify">{{ t('Selecione o arquivo...') }}</div>
+                <div class="wrap-uploadifive">
+                    <div id="attachment_post" data-parent-id="{{ $post->id }}" data-parent-name="posts" class="uploadifive">{{ t('Selecione o arquivo...') }}</div>
                 </div>
             </div>
         </div>
@@ -48,11 +48,3 @@
         </div>
     </div>
 {{ Form::close() }}
-
-<div id="modal">
-@if ($post->images)
-@foreach ($post->images as $key => $attachment)
-    @include('attachments.modal', [ 'attachment' => $attachment ])
-@endforeach
-@endif
-</div>

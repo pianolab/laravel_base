@@ -9,6 +9,7 @@ class Post extends Eloquent
 
     public function images()
     {
-        return $this->hasMany('Attachment', 'parent_id')->where('parent_name', 'post');
+        return $this->hasMany('Attachment', 'parent_id')
+            ->where('parent_name', 'post')->orderBy('created_at', 'desc');
     }
 }

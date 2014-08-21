@@ -1,10 +1,10 @@
 @if(!empty($attachment))
-    <div id="attachment-{{ $attachment->id }}" class="attachment col-lg-3 col-md-4 col-xs-6 thumb">
+    <div id="attachment-{{ $attachment->id }}" class="attachment col-lg-3 col-md-4 col-xs-6">
         <div class="image thumbnail">
             {{ HTML::image($attachment->path(), null, [ 'class' => 'img-responsive' ]) }}
         </div>
         <div class="actions">
-            <span class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete-attachment-{{ $attachment->id }}">
+            <span data-id="{{ $attachment->id }}" class="attachment-remove btn btn-xs btn-danger">
                 <i class="fa fa-trash-o"></i>
             </span>
         </div>

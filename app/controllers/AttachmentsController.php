@@ -9,11 +9,11 @@ class AttachmentsController extends \BaseController
         if (Input::hasFile('Filedata')) {
             $file = Input::file('Filedata');
 
-            $folder = str_plural( Input::get('parent_name') );
+            $folder = Input::get('parent_name');
 
             $attachment = new Attachment();
             $attachment->parent_id = Input::get('parent_id');
-            $attachment->parent_name = Input::get('parent_name');
+            $attachment->parent_name = str_singular( $folder );
             $attachment->origin_name = $file->getClientOriginalName();
             $attachment->type = $file->getMimeType();
             $attachment->size = $file->getSize();
@@ -25,16 +25,15 @@ class AttachmentsController extends \BaseController
 
             if ($is_upload) {
                 $attachment->save();
+                $this->layout->content = View::make('attachments.index')->with('attachment', $attachment);
             }
             else {
-                echo "Ocorreu um erro!";
+                return [ 'success' => false, 'message' => t('An error has occurred') ];
             }
         }
         else {
-            echo "Arquivo não encontrado";
+            return [ 'success' => false, 'message' => t('File not found') ];
         }
-
-        $this->layout->content = View::make('attachments.index')->with('attachment', $attachment);
     }
 
 
@@ -43,10 +42,10 @@ class AttachmentsController extends \BaseController
         $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
 
         if ($attachment->delete()) {
-            return Redirect::back()->with('success', t('File was successfully removed'));
+            return [ 'success' => true, 'message' => t('File was successfully removed') ];
         }
         else {
-            return Redirect::back()->withInput()->with('error', 'File can\'t be removed');
+            return [ 'success' => false, 'message' => t('File can\'t be removed') ];
         } # endif;
     }
 }

@@ -179,7 +179,14 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                     }
                 };
                 if (f.itemTemplate == false) {
-                    d.queueItem = b('<div class="uploadifive-queue-item"><a class="close" href="#"><i class="fa fa-times"></i></a><div><span class="filename"></span><span class="fileinfo"></span></div><div class="progress"><div class="progress-bar"></div></div></div>');
+                    d.queueItem = b('<div class="uploadifive-queue-item">\
+                        <a class="close" href="#"><i class="fa fa-times"></i></a>\
+                        <div>\
+                            <span class="filename"></span> - \
+                            <span class="fileinfo"></span>\
+                        </div>\
+                        <div class="progress"><div class="progress-bar"></div></div>\
+                    </div>');
                 } else {
                     d.queueItem = b(f.itemTemplate);
                 }
