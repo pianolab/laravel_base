@@ -5,7 +5,20 @@ var Uploadifive = {
 
     init: function () {
         this.destroy();
+        this.show_actions();
     },
+
+    show_actions: function () {
+        wrap = $(Uploadifive.wrap);
+        wrap.find('.actions').hide();
+        wrap.on('mouseenter', '.attachment', function () {
+            $(this).find('.actions').show();
+        })
+        .on('mouseleave', '.attachment', function () {
+            $(this).find('.actions').fadeOut();
+        });
+    },
+
     params: {
         auto: true,
         debug: false,
@@ -19,7 +32,7 @@ var Uploadifive = {
             $(Uploadifive.wrap).prepend(response);
         },
         onError: function(message, file) {
-            alert = $('<span>', { class: 'text-danger', text: 'File upload can not be done' });
+            alert = $('<span>', { class: 'text-danger', text: file.xhr.statusText });
             $(file.queueItem).find('.fileinfo').html(alert)
         }
     },

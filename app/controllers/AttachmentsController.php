@@ -28,11 +28,11 @@ class AttachmentsController extends \BaseController
                 $this->layout->content = View::make('attachments.index')->with('attachment', $attachment);
             }
             else {
-                return [ 'success' => false, 'message' => t('An error has occurred') ];
+                return App::abort(401);
             }
         }
         else {
-            return [ 'success' => false, 'message' => t('File not found') ];
+            return App::abort(401)
         }
     }
 
@@ -45,7 +45,7 @@ class AttachmentsController extends \BaseController
             return [ 'success' => true, 'message' => t('File was successfully removed') ];
         }
         else {
-            return [ 'success' => false, 'message' => t('File can\'t be removed') ];
+            return App::abort(401);
         } # endif;
     }
 }

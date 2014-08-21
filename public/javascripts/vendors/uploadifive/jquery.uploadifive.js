@@ -240,8 +240,8 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                     }
                     var j = l ? 0 : 500;
                     if (m.queueItem) {
-                        if (m.queueItem.find(".fileinfo").html() != " - Completed") {
-                            m.queueItem.find(".fileinfo").html(" - Cancelled");
+                        if (m.queueItem.find(".fileinfo").html() != " Completed") {
+                            m.queueItem.find(".fileinfo").addClass('text-danger').html(" Cancelled");
                         }
                         m.queueItem.find(".progress-bar").width(0);
                         m.queueItem.delay(k).fadeOut(j, function () {
@@ -431,7 +431,7 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                 d.uploadComplete = function (l, j, k) {
                     if (b.inArray("onUploadComplete", f.overrideEvents) < 0) {
                         j.queueItem.find(".progress-bar").css("width", "100%");
-                        j.queueItem.find(".fileinfo").html(" - Completed");
+                        j.queueItem.find(".fileinfo").addClass('text-success').html(" Completed");
                         j.queueItem.find(".progress").slideUp(250);
                         j.queueItem.addClass("complete");
                     }
