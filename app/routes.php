@@ -11,16 +11,16 @@
 |
 */
 Route::group(array('before' => 'auth'), function(){
-  Route::get('/', 'HomeController@index');
-  Route::get('/sign_out', 'SessionsController@sign_out');
+    Route::get('/', 'HomeController@index');
+    Route::get('/sign_out', 'SessionsController@sign_out');
 
-  Route::resource('posts', 'PostsController');
+    Route::resource('posts', 'PostsController');
 
-  Route::post('attachments', 'AttachmentsController@create');
-  Route::put('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.update', 'uses' => 'AttachmentsController@update' ])
-    ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
-  Route::delete('{parent}/{id}/attachments/{attachments}/destroy', [ 'as' => 'attachments.destroy', 'uses' => 'AttachmentsController@destroy' ])
-    ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
+    Route::post('attachments', 'AttachmentsController@create');
+    Route::put('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.update', 'uses' => 'AttachmentsController@update' ])
+        ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
+    Route::delete('{parent}/{id}/attachments/{attachments}/destroy', [ 'as' => 'attachments.destroy', 'uses' => 'AttachmentsController@destroy' ])
+        ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
 });
 
 Route::get('/sign_in', 'SessionsController@sign_in');
