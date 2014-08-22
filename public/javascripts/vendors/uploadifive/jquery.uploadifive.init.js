@@ -19,32 +19,34 @@ var Uploadifive = {
         });
     },
 
-    params: {
-        auto: true,
-        debug: false,
-        multi: true,
-        width: 'auto',
-        height: 'auto',
-        buttonText: 'Selecione arquivos...',
-        uploadScript: base_url + 'attachments',
-        buttonClass: 'btn btn-success',
-        onUploadComplete: function(file, response) {
-            $(Uploadifive.wrap).prepend(response);
-        },
-        onError: function(message, file) {
-            alert = $('<span>', { class: 'text-danger', text: file.xhr.statusText });
-            $(file.queueItem).find('.fileinfo').html(alert)
-        }
+    params: function (element) {
+        return {
+            width: 'auto',
+            height: 'auto',
+            uploadScript: base_url + 'attachments',
+            auto: element.data('button-auto') || true,
+            debug: element.data('button-debug') || false,
+            multi: element.data('button-multi') || true,
+            buttonText: element.data('button-text') || 'Selecione arquivos...',
+            buttonClass: element.data('button-class') || 'btn btn-success',
+            formData: {
+                parent_id: element.data('parent-id'),
+                parent_name: element.data('parent-name')
+            },
+            onUploadComplete: function(file, response) {
+                $(Uploadifive.wrap).prepend(response);
+            },
+            onError: function(message, file) {
+                alert = $('<span>', { class: 'text-danger', text: file.xhr.statusText });
+                $(file.queueItem).find('.fileinfo').html(alert)
+            }
+        };
     },
 
     upload: function (selector) {
-        this.selector = selector || this.selector;
-        element = $(this.selector);
-        this.params['formData'] = {
-            parent_id: element.data('parent-id'),
-            parent_name: element.data('parent-name')
-        };
-        $(selector).uploadifive(this.params);
+        element = $(selector || this.selector);
+        params = this.params(element);
+        $(selector).uploadifive(params);
     },
 
     update: function (id, ajaxData) {
@@ -68,7 +70,7 @@ var Uploadifive = {
         element = $(this.selector);
 
         $(document).on('click', '.attachment-remove', function () {
-            confirmation = confirm('Are you sure?');
+            confirmation = confirm('Do you really want to delete this file?');
             attachment = $(this).closest('.actions');
 
             if (confirmation) {
