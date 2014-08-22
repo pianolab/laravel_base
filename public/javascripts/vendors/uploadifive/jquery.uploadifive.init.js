@@ -60,6 +60,8 @@ var Uploadifive = {
         request_url = button.data('parent-name') + '/' + button.data('parent-id') +
             '/attachments/' + currentSelector.closest('.actions').data('id');
 
+        Application.show_loading();
+
         ajaxData = {};
         ajaxData[currentSelector.data('column')] = currentSelector.data('value');
         $.ajax({
@@ -69,6 +71,9 @@ var Uploadifive = {
             success: function (response) {
                 // return response;
             }
+        })
+        .always( function () {
+            Application.hide_loading();
         });
     },
 
@@ -81,6 +86,8 @@ var Uploadifive = {
 
             if (confirmation) {
                 request_url = button.data('parent-name') + '/' + button.data('parent-id') + '/attachments/' + attachment.data('id') + '/destroy';
+                Application.show_loading();
+
                 $.ajax({
                     type: "delete",
                     url: base_url + request_url,
@@ -90,6 +97,9 @@ var Uploadifive = {
                             setTimeout( function () { parent.remove(); }, 1000);
                         };
                     }
+                })
+                .always( function () {
+                    Application.hide_loading();
                 });
             };
         });

@@ -53,6 +53,7 @@
           </ul>
         </div><!--/.nav-collapse -->
       </div>
+      <div id="loading"><i class="fa fa-spinner fa-spin fa-1x"></i> {{ t('loading') }}</div>
     </header>
 @stop
 
@@ -62,6 +63,7 @@
     </div>
 
     <section class="container">
+    <i class="alert alert-warning"></i>
         @yield('content')
     </section>
 @stop
