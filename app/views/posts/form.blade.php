@@ -25,11 +25,9 @@
                 <label>{{ t('Arquivo') }}</label>
             </div>
         </div>
-        <div class="row form-group">
+        <div id="wrap-uploadifive" class="row form-group">
             <div class="col-md-12">
-                <div class="wrap-uploadifive">
-                    <div id="attachment_post" data-parent-id="{{ $post->id }}" data-parent-name="posts" class="uploadifive">{{ t('Selecione o arquivo...') }}</div>
-                </div>
+                <div id="attachment_post" data-multi="false" data-parent-id="{{ $post->id }}" data-parent-name="posts" class="uploadifive">{{ t('Selecione o arquivo...') }}</div>
             </div>
         </div>
         <div id="new-attachments" class="row form-group">

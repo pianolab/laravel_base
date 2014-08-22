@@ -1,7 +1,7 @@
 var Uploadifive = {
     wrap: '#new-attachments',
-
     selector: '.uploadifive',
+    element: '.attachment',
 
     init: function () {
         this.destroy();
@@ -19,34 +19,53 @@ var Uploadifive = {
         });
     },
 
-    params: function (element) {
-        return {
-            width: 'auto',
-            height: 'auto',
-            uploadScript: base_url + 'attachments',
-            auto: element.data('button-auto') || true,
-            debug: element.data('button-debug') || false,
-            multi: element.data('button-multi') || true,
-            buttonText: element.data('button-text') || 'Selecione arquivos...',
-            buttonClass: element.data('button-class') || 'btn btn-success',
-            formData: {
-                parent_id: element.data('parent-id'),
-                parent_name: element.data('parent-name')
-            },
-            onUploadComplete: function(file, response) {
-                $(Uploadifive.wrap).prepend(response);
-            },
-            onError: function(message, file) {
-                alert = $('<span>', { class: 'text-danger', text: file.xhr.statusText });
-                $(file.queueItem).find('.fileinfo').html(alert)
-            }
+    hide_button: function() {
+        if (Uploadifive.params.multi == false) {
+            $(Uploadifive.selector).closest('#wrap-uploadifive').slideUp();
         };
     },
 
-    upload: function (selector) {
-        element = $(selector || this.selector);
-        params = this.params(element);
-        $(selector).uploadifive(params);
+    set_params: function (selector) {
+        this.selector = selector || this.selector;
+        element = $(selector);
+
+        this.params = {
+            width: 'auto',
+            height: 'auto',
+            auto: true,
+            debug: false,
+            multi: true,
+            uploadScript: base_url + 'attachments',
+            buttonText: element.data('text') || 'Selecione arquivos...',
+            buttonClass: element.data('class') || 'btn btn-success',
+            formData: {
+                parent_id: element.data('parent-id'),
+                parent_name: element.data('parent-name')
+            }
+        };
+
+        this.params.onUploadComplete = function(file, response) {
+            Uploadifive.hide_button();
+            return $(Uploadifive.wrap).prepend(response);
+        };
+
+        this.params.onError = function(message, file) {
+            alert = $('<span>', { class: 'text-danger', text: file.xhr.statusText });
+            return $(file.queueItem).find('.fileinfo').html(alert)
+        };
+
+        return this.params;
+    },
+
+    one: function (selector) {
+        this.set_params(selector);
+        this.params.multi = false;
+        $(selector).uploadifive(this.params);
+    },
+
+    many: function (selector) {
+        this.set_params(selector);
+        $(selector).uploadifive(this.params);
     },
 
     update: function (id, ajaxData) {
@@ -85,7 +104,15 @@ var Uploadifive = {
                     success: function (response) {
                         if (response.success) {
                             parent = attachment.closest('#attachment-' + attachment.data('id')).fadeOut('slow');
-                            setTimeout( function () { parent.remove(); }, 1000);
+                            setTimeout( function () {
+                                parent.remove();
+                                if (Uploadifive.params.multi == false) {
+                                    if ($(Uploadifive.wrap).find(Uploadifive.wrap).length == 0) {
+                                        wrap = $(Uploadifive.selector).closest('#wrap-uploadifive').show();
+                                        wrap.find('.uploadifive-queue').html('');
+                                    };
+                                };
+                            }, 1000);
                         };
                     }
                 })

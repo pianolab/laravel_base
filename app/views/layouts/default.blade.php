@@ -53,6 +53,7 @@
           </ul>
         </div><!--/.nav-collapse -->
       </div>
+      <span id="loading"><i class="fa fa-spinner fa-spin"></i> loading...</span>
     </header>
 @stop
 

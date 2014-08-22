@@ -7,7 +7,7 @@ var Post = {
     },
 
     uploadify: function () {
-        Uploadifive.upload('#attachment_post');
+        Uploadifive.many('#attachment_post');
     },
 
     validations: function () {
@@ -37,7 +37,6 @@ var Post = {
             })
             .success( function (response) {
                 if (response.success) {
-                    console.log(response.attachment_is_main == 1);
                     element.attr('data-current-value', response.attachment_is_main);
 
                     if (response.attachment_is_main == 1) {
