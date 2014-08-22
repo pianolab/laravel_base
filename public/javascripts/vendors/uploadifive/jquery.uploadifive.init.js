@@ -4,6 +4,7 @@ var Uploadifive = {
     selector: '.uploadifive',
 
     init: function () {
+        this.main();
         this.destroy();
         this.show_actions();
     },
@@ -38,12 +39,37 @@ var Uploadifive = {
     },
 
     upload: function (selector) {
-        button_upload = $(selector || this.selector);
+        button = $(selector || this.selector);
         this.params['formData'] = {
-            parent_id: button_upload.data('parent-id'),
-            parent_name: button_upload.data('parent-name')
+            parent_id: button.data('parent-id'),
+            parent_name: button.data('parent-name')
         };
         $(selector).uploadifive(this.params);
+    },
+
+    main: function () {
+        $(Uploadifive.wrap).on('click', '.attachment-main', function () {
+            test = Uploadifive.update($(this));
+
+            console.log(test)
+        });
+    },
+
+    update: function (currentSelector) {
+        button = $(this.selector);
+        request_url = button.data('parent-name') + '/' + button.data('parent-id') +
+            '/attachments/' + currentSelector.closest('.actions').data('id');
+
+        ajaxData = {};
+        ajaxData[currentSelector.data('column')] = currentSelector.data('value');
+        $.ajax({
+            type: "put",
+            data: ajaxData,
+            url: base_url + request_url,
+            success: function (response) {
+                // return response;
+            }
+        });
     },
 
     destroy: function () {
@@ -51,7 +77,7 @@ var Uploadifive = {
 
         $(document).on('click', '.attachment-remove', function () {
             confirmation = confirm('Are you sure?');
-            attachment = $(this);
+            attachment = $(this).closest('.actions');
 
             if (confirmation) {
                 request_url = button.data('parent-name') + '/' + button.data('parent-id') + '/attachments/' + attachment.data('id') + '/destroy';

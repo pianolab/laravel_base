@@ -2,7 +2,7 @@
 
 class AttachmentsController extends \BaseController
 {
-    public function index()
+    public function create()
     {
         $this->setLayout('layouts.blank');
 
@@ -32,8 +32,25 @@ class AttachmentsController extends \BaseController
             }
         }
         else {
-            return App::abort(401)
+            return App::abort(401);
         }
+    }
+
+
+    public function update($parent, $parent_id, $id)
+    {
+        $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
+
+        echo "<pre>";
+        print_r(Input::all());
+        print_r(basename(__FILE__) . ":" . __LINE__);die;
+
+        if ($attachment->update($data)) {
+            return [ 'success' => true, 'message' => t('File was successfully update') ];
+        }
+        else {
+            return App::abort(401);
+        } # endif;
     }
 
 

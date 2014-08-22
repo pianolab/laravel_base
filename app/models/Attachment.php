@@ -18,4 +18,9 @@ class Attachment extends \Eloquent
     {
         return 'uploads/' . str_plural($this->parent_name) . '/' . $this->parent_id . '/' . $this->file_name;
     }
+
+    public function is_main()
+    {
+        return 0;
+    }
 }
