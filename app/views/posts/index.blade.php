@@ -43,5 +43,6 @@
             @endforeach
             </tbody>
         </table>
+        {{ $posts->links() }}
     @endif
 @stop

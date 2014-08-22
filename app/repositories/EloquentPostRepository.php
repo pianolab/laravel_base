@@ -20,7 +20,7 @@ class EloquentPostRepository
         return $return;
     }
 
-    public function all($perpage = 15)
+    public function all($perpage = 2)
     {
         return Post::paginate($perpage);
     }
