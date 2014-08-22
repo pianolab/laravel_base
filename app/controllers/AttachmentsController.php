@@ -25,7 +25,7 @@ class AttachmentsController extends \BaseController
 
             if ($is_upload) {
                 $attachment->save();
-                $this->layout->content = View::make('attachments.index')->with('attachment', $attachment);
+                $this->layout->content = View::make('attachments.create')->with('attachment', $attachment);
             }
             else {
                 return App::abort(401);

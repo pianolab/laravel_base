@@ -53,7 +53,6 @@
           </ul>
         </div><!--/.nav-collapse -->
       </div>
-      <div id="loading"><i class="fa fa-spinner fa-spin fa-1x"></i> {{ t('loading') }}</div>
     </header>
 @stop
 

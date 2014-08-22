@@ -47,23 +47,12 @@ var Uploadifive = {
         $(selector).uploadifive(this.params);
     },
 
-    main: function () {
-        $(Uploadifive.wrap).on('click', '.attachment-main', function () {
-            test = Uploadifive.update($(this));
-
-            console.log(test)
-        });
-    },
-
-    update: function (currentSelector) {
-        button = $(this.selector);
-        request_url = button.data('parent-name') + '/' + button.data('parent-id') +
+    update: function (id, ajaxData) {
+        element = $(this.selector);
+        request_url = element.data('parent-name') + '/' + element.data('parent-id') +
             '/attachments/' + currentSelector.closest('.actions').data('id');
 
         Application.show_loading();
-
-        ajaxData = {};
-        ajaxData[currentSelector.data('column')] = currentSelector.data('value');
         $.ajax({
             type: "put",
             data: ajaxData,
