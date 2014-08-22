@@ -17,7 +17,7 @@ Route::group(array('before' => 'auth'), function(){
   Route::resource('posts', 'PostsController');
 
   Route::post('attachments', 'AttachmentsController@create');
-  Route::delete('{parent}/{id}/attachments/{attachments}/update', [ 'as' => 'attachments.update', 'uses' => 'AttachmentsController@update' ])
+  Route::put('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.update', 'uses' => 'AttachmentsController@update' ])
     ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
   Route::delete('{parent}/{id}/attachments/{attachments}/destroy', [ 'as' => 'attachments.destroy', 'uses' => 'AttachmentsController@destroy' ])
     ->where('id', '[0-9]+')->where('attachments', '[0-9]+');

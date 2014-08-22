@@ -4,7 +4,6 @@ var Uploadifive = {
     selector: '.uploadifive',
 
     init: function () {
-        this.main();
         this.destroy();
         this.show_actions();
     },
@@ -16,7 +15,7 @@ var Uploadifive = {
             $(this).find('.actions').show();
         })
         .on('mouseleave', '.attachment', function () {
-            $(this).find('.actions').fadeOut();
+            $(this).find('.actions').hide(); // fadeOut
         });
     },
 
@@ -39,27 +38,26 @@ var Uploadifive = {
     },
 
     upload: function (selector) {
-        button = $(selector || this.selector);
+        this.selector = selector || this.selector;
+        element = $(this.selector);
         this.params['formData'] = {
-            parent_id: button.data('parent-id'),
-            parent_name: button.data('parent-name')
+            parent_id: element.data('parent-id'),
+            parent_name: element.data('parent-name')
         };
         $(selector).uploadifive(this.params);
     },
 
     update: function (id, ajaxData) {
         element = $(this.selector);
-        request_url = element.data('parent-name') + '/' + element.data('parent-id') +
-            '/attachments/' + currentSelector.closest('.actions').data('id');
+        request_url = element.data('parent-name') + '/' +
+            element.data('parent-id') + '/attachments/' + id;
 
         Application.show_loading();
-        $.ajax({
-            type: "put",
+
+        return $.ajax({
+            type: 'put',
             data: ajaxData,
-            url: base_url + request_url,
-            success: function (response) {
-                // return response;
-            }
+            url: base_url + request_url
         })
         .always( function () {
             Application.hide_loading();
@@ -67,14 +65,16 @@ var Uploadifive = {
     },
 
     destroy: function () {
-        button = $(this.selector);
+        element = $(this.selector);
 
         $(document).on('click', '.attachment-remove', function () {
             confirmation = confirm('Are you sure?');
             attachment = $(this).closest('.actions');
 
             if (confirmation) {
-                request_url = button.data('parent-name') + '/' + button.data('parent-id') + '/attachments/' + attachment.data('id') + '/destroy';
+                request_url = element.data('parent-name') + '/' + element.data('parent-id') +
+                    '/attachments/' + attachment.data('id') + '/destroy';
+
                 Application.show_loading();
 
                 $.ajax({

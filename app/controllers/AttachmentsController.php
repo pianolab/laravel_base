@@ -39,14 +39,11 @@ class AttachmentsController extends \BaseController
 
     public function update($parent, $parent_id, $id)
     {
+        $input = Input::all();
         $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
 
-        echo "<pre>";
-        print_r(Input::all());
-        print_r(basename(__FILE__) . ":" . __LINE__);die;
-
-        if ($attachment->update($data)) {
-            return [ 'success' => true, 'message' => t('File was successfully update') ];
+        if ($attachment->update($input)) {
+            return [ 'success' => true, 'attachment_is_main' => $attachment->is_main ];
         }
         else {
             return App::abort(401);

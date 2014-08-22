@@ -7,7 +7,7 @@
             <span class="attachment-remove btn btn-xs btn-danger">
                 <i class="fa fa-trash-o"></i>
             </span>
-            <span class="attachment-main btn btn-xs btn-default" data-column="main" data-value="{{ $attachment->is_main() }}">
+            <span class="attachment-main btn btn-xs btn-default" data-current-value="{{ $attachment->is_main() }}">
                 <i class="fa fa-{{ $attachment->is_main() ? 'check text-success' : 'times text-danger'}}"></i> {{ t('main') }}
             </span>
         </div>

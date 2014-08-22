@@ -3,6 +3,7 @@ var Post = {
     init: function () {
         this.validations();
         this.uploadify();
+        this.main();
     },
 
     uploadify: function () {
@@ -28,9 +29,29 @@ var Post = {
 
     main: function () {
         $(Uploadifive.wrap).on('click', '.attachment-main', function () {
-            test = Uploadifive.update($(this));
+            var element = $(this);
+            var current_value = element.attr('data-current-value');
 
-            console.log(test)
+            Uploadifive.update( element.closest('.actions').data('id'), {
+                is_main: current_value == 1 ? 0 : 1
+            })
+            .success( function (response) {
+                if (response.success) {
+                    console.log(response.attachment_is_main == 1);
+                    element.attr('data-current-value', response.attachment_is_main);
+
+                    if (response.attachment_is_main == 1) {
+                        element.find('i')
+                            .removeClass('fa-times').removeClass('text-danger')
+                            .addClass('fa-check').addClass('text-success');
+                    }
+                    else {
+                        element.find('i')
+                            .removeClass('fa-check').removeClass('text-success')
+                            .addClass('fa-times').addClass('text-danger');
+                    };
+                };
+            });
         });
     },
 };

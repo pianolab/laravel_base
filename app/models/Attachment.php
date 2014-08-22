@@ -8,6 +8,7 @@ class Attachment extends \Eloquent
 
     protected $table = 'attachments';
     protected $softDelete = true;
+    protected $fillable = [ 'is_main' ];
 
     public function unique_name()
     {
@@ -21,6 +22,6 @@ class Attachment extends \Eloquent
 
     public function is_main()
     {
-        return 0;
+        return $this->is_main;
     }
 }

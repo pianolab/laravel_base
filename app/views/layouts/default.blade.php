@@ -62,7 +62,6 @@
     </div>
 
     <section class="container">
-    <i class="alert alert-warning"></i>
         @yield('content')
     </section>
 @stop
