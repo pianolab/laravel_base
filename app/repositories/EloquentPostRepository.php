@@ -2,6 +2,8 @@
 
 class EloquentPostRepository
 {
+    static protected $name = 'Post';
+
     protected function isValid($data, $id = false)
     {
         $return = false;
@@ -33,10 +35,10 @@ class EloquentPostRepository
         if ($this->isValid($data)) {
             $post = new Post($data);
             if ($post->save()) {
-                return Redirect::route('posts.edit', $post->id)->with('success', t('Post was successfully saved'));
+                return Redirect::route('posts.edit', $post->id)->with('success', t('success_created', [ 'module' => t(self::$name) ]));
             }
             else {
-                return Redirect::back()->withInput()->with('danger', t('Data can\'t be saved, please try again'));
+                return Redirect::back()->withInput()->with('danger', t('error_created', [ 'module' => t(self::$name) ]));
             } # endif;
         }
         else {
@@ -49,10 +51,10 @@ class EloquentPostRepository
         if ($this->isValid($data, $id)) {
             $post = Post::find($id);
             if ($post->update($data)) {
-                return Redirect::route('posts.edit', $post->id)->with('success', t('Post was successfully updated'));
+                return Redirect::route('posts.edit', $post->id)->with('success', t('success_updated', [ 'module' => t(self::$name) ]));
             }
             else {
-                return Redirect::back()->withInput()->with('danger', t('Data can\'t be saved, please try again'));
+                return Redirect::back()->withInput()->with('danger', t('error_updated', [ 'module' => t(self::$name) ]));
             } # endif;
         }
         else {
@@ -63,10 +65,10 @@ class EloquentPostRepository
     public function destroy($id)
     {
         if (Post::find($id)->delete()) {
-            return Redirect::route('posts.index')->with('success', t('Post was successfully deleted'));
+            return Redirect::route('posts.index')->with('success', t('success_deleted', [ 'module' => t(self::$name) ]));
         }
         else {
-            return Redirect::back()->withInput()->with('error', t('Post can\'t be deleted, please try again'));
+            return Redirect::back()->withInput()->with('error', t('error_deleted', [ 'module' => t(self::$name) ]));
         } # endif;
     }
 }
