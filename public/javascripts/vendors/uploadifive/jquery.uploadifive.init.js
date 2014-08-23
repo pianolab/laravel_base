@@ -36,7 +36,7 @@ var Uploadifive = {
             debug: false,
             multi: true,
             uploadScript: base_url + 'attachments',
-            buttonText: element.data('text') || 'Selecione arquivos...',
+            buttonText: t(element.data('text') || 'Choose files...'),
             buttonClass: element.data('class') || 'btn btn-success',
             formData: {
                 parent_id: element.data('parent-id'),
@@ -89,8 +89,8 @@ var Uploadifive = {
         element = $(this.selector);
 
         $(document).on('click', '.attachment-remove', function () {
-            confirmation = confirm('Do you really want to delete this file?');
             attachment = $(this).closest('.actions');
+            confirmation = confirm( t('confirm_remove_image', [ [ ':image', attachment.siblings('.caption').text() ] ]) );
 
             if (confirmation) {
                 request_url = element.data('parent-name') + '/' + element.data('parent-id') +

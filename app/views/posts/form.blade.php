@@ -22,7 +22,7 @@
     @if ($post->id)
         <div class="row form-group">
             <div class="col-md-12">
-                <label>{{ t('Arquivo') }}</label>
+                <label>{{ t('Files') }}</label>
             </div>
         </div>
         <div id="wrap-uploadifive" class="row form-group">

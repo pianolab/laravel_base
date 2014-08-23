@@ -25,3 +25,5 @@ Route::group(array('before' => 'auth'), function(){
 
 Route::get('/sign_in', 'SessionsController@sign_in');
 Route::post('/authenticate', 'SessionsController@authenticate');
+
+Route::get('/languages/{file}.js', 'LanguagesController@js');

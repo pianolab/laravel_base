@@ -1,4 +1,5 @@
 <script type="text/javascript">var base_url = "<?php echo url('/') ?>/"</script>
+{{ HTML::script('languages/application.js') }}
 
 {{ HTML::script('javascripts/vendors/jquery/jquery.js') }}
 
