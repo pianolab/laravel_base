@@ -4,10 +4,10 @@ Application = {
 
     translate: function (key, hashes) {
         message = Language[key]
-        $.each(hashes, function (value, name) {
+        $.each(hashes || {}, function (value, name) {
             message = message.replace(name[0], name[1]);
         });
-        return message != '' ? key : message;
+        return message || key;
     },
 
     hide_loading: function () {
@@ -19,8 +19,8 @@ Application = {
     }
 };
 
-function t(key, value, name) {
-    return Application.translate(key, value || '', name || '');
+function t(key, hashes) {
+    return Application.translate(key, hashes || {});
 }
 
 $(document).on("ready", function () { Application.init(); });
