@@ -20,7 +20,7 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle</span>
+            <span class="sr-only">{{ t('Toggle') }}</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -53,7 +53,7 @@
           </ul>
         </div><!--/.nav-collapse -->
       </div>
-      <span id="loading"><i class="fa fa-spinner fa-spin"></i> loading...</span>
+      <span id="loading"><i class="fa fa-spinner fa-spin"></i> {{ t('loading') }}...</span>
     </header>
 @stop
 
