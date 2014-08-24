@@ -1,8 +1,10 @@
 <?php
 
-class BaseController extends Controller
+namespace Admin;
+
+class BaseController extends \Controller
 {
-    protected $layout = 'layouts.application';
+    protected $layout = 'layouts.admin.application';
 
     /**
      * Setup the layout used by the controller.
@@ -13,12 +15,12 @@ class BaseController extends Controller
     {
         if (!is_null($this->layout))
         {
-            $this->layout = View::make($this->layout);
+            $this->layout = \View::make($this->layout);
         }
     }
 
     public function setLayout($layout)
     {
-        return $this->layout = View::make($layout);
+        return $this->layout = \View::make($layout);
     }
 }

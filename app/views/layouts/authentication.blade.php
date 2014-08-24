@@ -18,7 +18,7 @@
 </head>
 <body>
   <div class="container">
-    @include('layouts.alerts')
+    @include('layouts.messages')
   </div>
 
   @section('content')

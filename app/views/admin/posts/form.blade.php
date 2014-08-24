@@ -42,7 +42,7 @@
     <div class="row form-group">
         <div class="col-md-12">
             {{ Form::submit($submit_label, [ 'class' => 'btn btn-primary' ]) }}
-            <a href="{{ url('posts') }}">{{ t('back') }}</a>
+            {{ link_to_route('admin.posts.index', t('back')) }}
         </div>
     </div>
 {{ Form::close() }}

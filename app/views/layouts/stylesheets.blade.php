@@ -1,1 +1,0 @@
-{{ HTML::style('stylesheets/application.css') }}

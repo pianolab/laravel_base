@@ -11,7 +11,7 @@
 @stop
 
 @section('styles')
-    @include('layouts.stylesheets')
+    {{ HTML::style('stylesheets/administration.css') }}
     @yield('stylesheets')
 @stop
 
@@ -30,13 +30,13 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li>{{ link_to('/', t('Dashboard')) }}</li>
+            <li>{{ link_to('/admin', t('Dashboard')) }}</li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ t('Posts') }} <i class="fa fa-angle-down"></i></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">{{ t('Posts') }}</li>
-                <li>{{ link_to('/posts/create', t('+ Add')) }}</li>
-                <li>{{ link_to('/posts', t('See all')) }}</li>
+                <li>{{ link_to_route('admin.posts.create', t('+ Add')) }}</li>
+                <li>{{ link_to_route('admin.posts.index', t('See all')) }}</li>
                 <li class="divider"></li>
                 <li class="dropdown-header">{{ t('Categories') }}</li>
                 <li><a href="#link-sample">{{ t('Sample') }}</a></li>
@@ -59,7 +59,7 @@
 
 @section('container')
     <div class="container">
-        @include('layouts.alerts')
+        @include('layouts.messages')
     </div>
 
     <section class="container">
@@ -82,6 +82,6 @@
 @stop
 
 @section('scripts')
-    @include('layouts.javascripts')
+    @include('layouts.admin.javascripts')
     @yield('javascripts')
 @stop
