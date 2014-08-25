@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Set language
+ */
+ App::setLocale(Session::get('lang', 'br'));
+
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader

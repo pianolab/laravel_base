@@ -29,6 +29,14 @@ Route::group(array('before' => 'auth'), function () {
     });
 });
 
+Route::get('lang/{lang}', function ($lang) {
+    if (in_array($lang, [ 'en', 'br' ])) {
+        App::setLocale($lang);
+        Session::put('lang', $lang);
+    }
+    return Redirect::back();
+});
+
 # Home application
 Route::get('/', 'HomeController@index');
 
