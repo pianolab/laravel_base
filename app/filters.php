@@ -33,7 +33,7 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
+Route::filter('auth.admin', function()
 {
     if (Auth::guest())
     {
@@ -41,9 +41,13 @@ Route::filter('auth', function()
         {
             return Response::make('Unauthorized', 401);
         }
-        else
-        {
+        else {
             return Redirect::guest('sign_in');
+        }
+    }
+    else {
+        if (!in_array(Auth::user()->type, [ 'admin', 'dev' ])) {
+            return Redirect::intended('/sign_out');
         }
     }
 });

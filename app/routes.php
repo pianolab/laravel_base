@@ -11,7 +11,7 @@
 |
 */
 # Routes before authentication
-Route::group(array('before' => 'auth'), function () {
+Route::group(array('before' => 'auth.admin'), function () {
     # Attachments upload
     Route::post('attachments', 'AttachmentsController@create');
     Route::put('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.update', 'uses' => 'AttachmentsController@update' ])
