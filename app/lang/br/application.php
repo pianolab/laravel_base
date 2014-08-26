@@ -30,6 +30,7 @@ return array(
     'back' => 'voltar',
     'cancel' => 'cancelar',
     'delete' => 'apagar',
+    'loading' => 'carregando',
 
     # Buttons
     'submit_update' => 'Atualizar :model',
@@ -47,7 +48,10 @@ return array(
     'Post' => 'Postagem',
     'Posts' => 'Postagens',
     'Title' => 'Título',
-    'Published At' => 'Data de publicação',
+    'Published at' => 'Data de publicação',
     'Content' => 'Conteúdo',
+    'Files' => 'Arquivos',
+    'main' => 'principal',
+    'Choose files...' => 'Selecione os arquivos...',
 
 );
