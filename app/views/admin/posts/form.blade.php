@@ -4,17 +4,17 @@
 {{ Form::model($post, $form_attributes) }}
     <div class="row form-group">
         <div class="col-md-8">
-            {{ Form::label('title') }}
+            {{ Form::label('title', t('Title')) }}
             {{ Form::text('title', null, [ 'class' => 'form-control' ]) }}
         </div>
         <div class="col-md-4">
-            {{ Form::label('published_at') }}
+            {{ Form::label('published_at', t('Published at')) }}
             {{ Form::text('published_at', null, [ 'class' => 'form-control datepicker', 'alt' => 'date-us' ]) }}
         </div>
     </div>
     <div class="row form-group">
         <div class="col-md-12 markdown-editor">
-            {{ Form::label('content') }}
+            {{ Form::label('content', t('Content')) }}
             {{ Form::textarea('content', null, [ 'class' => 'form-control' ]) }}
         </div>
     </div>

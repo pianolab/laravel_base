@@ -47,8 +47,19 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ url('/sign_out') }}"><i class="fa fa-power-off"></i> {{ t('Sign out!') }}</a></li>
+                    <li><a href="{{ url('/sign_out') }}"><i class="fa fa-power-off"></i> {{ t('Sign out') }}!</a></li>
                 </ul>
+            </li>
+            <li>
+                @if (App::getLocale() == 'en')
+                    <a href="{{ url('/lang/br') }}">
+                        {{ HTML::image('images/lang/icon-br.png') }}
+                    </a>
+                @else
+                    <a href="{{ url('/lang/en') }}">
+                        {{ HTML::image('images/lang/icon-en.png') }}
+                    </a>
+                @endif
             </li>
           </ul>
         </div><!--/.nav-collapse -->

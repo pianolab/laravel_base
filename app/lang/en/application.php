@@ -14,4 +14,8 @@ return array(
     'success_deleted' => ':module was successfully deleted',
     'error_deleted' => ':module can\'t be deleted, please try again',
 
+    # Buttons
+    'update_' => 'Update :model',
+    'save_' => 'Save :model',
+
 );
