@@ -1,5 +1,5 @@
 @section('content')
-    <h3>{{ t('Posts') }} <small>{{ t('listing') }}</small></h3>
+    <h3>{{ _t('posts') }} <small>{{ t('listing') }}</small></h3>
 
     @if ($posts->isEmpty())
         {{ t('notfound', [ 'model' => 'post', 'link' => link_to_route('admin.posts.create', 'here') ]) }}
@@ -7,8 +7,8 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>{{ t('Title') }}</th>
-                    <th>{{ t('Published at') }}</th>
+                    <th>{{ _t('title') }}</th>
+                    <th>{{ _t('published at') }}</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>

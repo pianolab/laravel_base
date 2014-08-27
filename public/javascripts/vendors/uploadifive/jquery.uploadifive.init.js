@@ -36,7 +36,7 @@ var Uploadifive = {
             debug: false,
             multi: true,
             uploadScript: base_url + 'attachments',
-            buttonText: t(element.data('text') || 'Choose files...'),
+            buttonText: _t(element.data('text')) || _t('choose files') + '...',
             buttonClass: element.data('class') || 'btn btn-success',
             formData: {
                 parent_id: element.data('parent-id'),

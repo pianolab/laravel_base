@@ -16,14 +16,14 @@ return array(
     'error_deleted' => ':module não pode ser apagado, tente novamente',
 
     # Application
-    'Administrator' => 'Administração',
+    'administrator' => 'administração',
     'Welcome to application' => 'Bem vindo ao site',
     'Welcome to administration' => 'Bem vindo à administração',
     'Are sure you want to delete?' => 'Deseja realmente apagar?',
     'Go to admin' => 'Ir para o admin',
-    'Atention' => 'Atenção',
-    '+ Add' => '+ Adicionar',
-    'See all' => 'Ver todos',
+    'atention' => 'atenção',
+    '+ add' => '+ adicionar',
+    'see all' => 'ver todos',
     'listing' => 'listagem',
     'new' => 'criar',
     'edit' => 'editar',
@@ -37,21 +37,22 @@ return array(
     'submit_new' => 'Salvar :model',
 
     # Authentication
-    'Authentication' => 'Autenticação',
-    'Password' => 'Senha',
-    'Sign in' => 'Entrar',
-    'Sign out' => 'Sair',
+    'authentication' => 'autenticação',
+    'password' => 'senha',
+    'sign in' => 'entrar',
+    'sign out' => 'sair',
 
     # Modules
+    'name' => 'nome',
+    'title' => 'título',
+    'published at' => 'data de publicação',
+    'here' => 'aqui',
 
     # Posts
-    'Post' => 'Postagem',
-    'Posts' => 'Postagens',
-    'Title' => 'Título',
-    'Published at' => 'Data de publicação',
-    'Content' => 'Conteúdo',
-    'Files' => 'Arquivos',
+    'post' => 'postagem',
+    'posts' => 'postagens',
+    'content' => 'conteúdo',
+    'files' => 'arquivos',
     'main' => 'principal',
-    'Choose files...' => 'Selecione os arquivos...',
-
+    'choose files' => 'selecione os arquivos',
 );

@@ -1,7 +1,13 @@
 <?php
 
+if (!function_exists('_t')) {
+    function _t($key, $params = array(), $file = 'application') {
+        return ucfirst( t($key, $params, $file) );
+    }
+}
+
 if (!function_exists('t')) {
-    function t ($key, $params = array(), $file = 'application') {
+    function t($key, $params = array(), $file = 'application') {
         $file = $file ? $file : Config::get('app.lang_file_default');
         $file_key = $file . '.' . $key;
         $translated = Lang::get($file_key, $params);

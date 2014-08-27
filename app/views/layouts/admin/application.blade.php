@@ -26,20 +26,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="navbar-brand">{{ t('Administrator') }}</div>
+          <div class="navbar-brand">{{ _t('administrator') }}</div>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li>{{ link_to('/admin', t('Dashboard')) }}</li>
+            <li>{{ link_to('/admin', _t('dashboard')) }}</li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ t('Posts') }} <i class="fa fa-angle-down"></i></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _t('posts') }} <i class="fa fa-angle-down"></i></b></a>
               <ul class="dropdown-menu">
-                <li class="dropdown-header">{{ t('Posts') }}</li>
-                <li>{{ link_to_route('admin.posts.create', t('+ Add')) }}</li>
-                <li>{{ link_to_route('admin.posts.index', t('See all')) }}</li>
+                <li class="dropdown-header">{{ _t('posts') }}</li>
+                <li>{{ link_to_route('admin.posts.create', t('+ add')) }}</li>
+                <li>{{ link_to_route('admin.posts.index', t('see all')) }}</li>
                 <li class="divider"></li>
-                <li class="dropdown-header">{{ t('Categories') }}</li>
-                <li><a href="#link-sample">{{ t('Sample') }}</a></li>
+                <li class="dropdown-header">{{ _t('categories') }}</li>
+                <li><a href="#link-sample">{{ t('sample') }}</a></li>
               </ul>
             </li>
           </ul>
@@ -47,7 +47,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ url('/sign_out') }}"><i class="fa fa-power-off"></i> {{ t('Sign out') }}!</a></li>
+                    <li><a href="{{ url('/sign_out') }}"><i class="fa fa-power-off"></i> {{ _t('sign out') }}!</a></li>
                 </ul>
             </li>
             <li>
