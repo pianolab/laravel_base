@@ -1,6 +1,6 @@
 <?php
 
-class EloquentPostRepository extends BaseRepository
+class PostEloquentRepository extends BaseRepository
 {
     public $MY_NAME = 'post';
 

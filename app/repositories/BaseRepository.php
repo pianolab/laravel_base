@@ -1,6 +1,6 @@
 <?php
 
-class BaseRepository
+class BaseRepository implements RepositoryInterface
 {
     public $MY_NAME = 'data';
 

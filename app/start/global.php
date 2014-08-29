@@ -25,6 +25,7 @@ ClassLoader::addDirectories(array(
     app_path().'/repositories',
     app_path().'/helpers',
     app_path().'/validators',
+    app_path().'/interfaces/main',
 
 ));
 

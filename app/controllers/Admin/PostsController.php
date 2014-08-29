@@ -4,7 +4,7 @@ namespace Admin;
 
 class PostsController extends BaseController
 {
-    public function __construct(\EloquentPostRepository $post)
+    public function __construct(\PostEloquentRepository $post)
     {
         $this->post = $post;
     }
