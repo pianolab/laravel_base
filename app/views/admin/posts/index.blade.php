@@ -1,5 +1,15 @@
 @section('content')
-    <h3>{{ _t('posts') }} <small>{{ t('listing') }}</small></h3>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>{{ _t('posts') }} <small>{{ t('listing') }}</small></h3>
+        </div>
+        <div class="col-md-4 text-right"> <br>
+            <a href="{{ route('admin.posts.create') }}" class="btn btn-success">
+                <i class="fa fa-plus"></i> {{ t('add') }}
+            </a>
+        </div>
+    </div>
+
 
     @if ($posts->isEmpty())
         {{ t('notfound', [ 'model' => 'post', 'link' => link_to_route('admin.posts.create', 'here') ]) }}

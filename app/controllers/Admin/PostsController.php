@@ -11,17 +11,26 @@ class PostsController extends BaseController
 
     public function index()
     {
-        $this->layout->content = \View::make('admin.posts.index')->with('posts', $this->post->all());
+        $post = $this->post->all();
+        $this->layout->content = \View::make('admin.posts.index')->with('posts', $post);
     }
 
     public function create()
     {
-        $this->layout->content = \View::make('admin.posts.create')->with('post', new \Post);
+        $post = $this->post->init();
+        $this->layout->content = \View::make('admin.posts.create')->with('post', $post);
     }
 
     public function store()
     {
-        return $this->post->store(\Input::except('_method', '_token'));
+        $created = $this->post->store(\Input::except('_method', '_token'));
+
+        if ($created->success()) {
+            return \Redirect::route('admin.posts.edit', $created->id)->with('success', $created->message);
+        }
+        else {
+            return \Redirect::back()->withErrors($created->errors)->withInput();
+        } # endif;
     }
 
     public function edit($id)
@@ -32,11 +41,25 @@ class PostsController extends BaseController
 
     public function update($id)
     {
-        return $this->post->update($id, \Input::except('_method', '_token'));
+        $updated = $this->post->update($id, \Input::except('_method', '_token'));
+
+        if ($updated->success()) {
+            return \Redirect::route('admin.posts.index')->with('success', $updated->message);
+        }
+        else {
+            return \Redirect::back()->withErrors($updated->errors)->withInput();
+        } # endif;
     }
 
     public function destroy($id)
     {
-        return $this->post->destroy($id);
+        $destroyed = $this->post->destroy($id);
+
+        if ($destroyed->success()) {
+            return \Redirect::route('admin.posts.index')->with('success', $destroyed->message);
+        }
+        else {
+            return \Redirect::back()->with('danger', $destroyed->message);
+        } # endif;
     }
 }

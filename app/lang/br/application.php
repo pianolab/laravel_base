@@ -6,14 +6,14 @@ return array(
     'notfound' => 'Nenhum :model foi criado ainda, clique :link para adicionar',
     'confirm_remove_image' => 'Deseja realmente apagar a imagem ":image"?',
 
-    'success_created' => ':module foi criado com sucesso',
-    'error_created' => ':module não pode ser criado, tente novamente',
+    'created_success' => ':module foi criado com sucesso',
+    'created_error' => ':module não pode ser criado, tente novamente',
 
-    'success_updated' => ':module foi alterado com sucesso',
-    'error_updated' => ':module não pode ser alterado, tente novamente',
+    'updated_success' => ':module foi alterado com sucesso',
+    'updated_error' => ':module não pode ser alterado, tente novamente',
 
-    'success_deleted' => ':module foi apagado com sucesso',
-    'error_deleted' => ':module não pode ser apagado, tente novamente',
+    'deleted_success' => ':module foi apagado com sucesso',
+    'deleted_error' => ':module não pode ser apagado, tente novamente',
 
     # Application
     'administrator' => 'administração',
@@ -25,8 +25,10 @@ return array(
     '+ add' => '+ adicionar',
     'see all' => 'ver todos',
     'listing' => 'listagem',
+    'data' => 'dados',
     'new' => 'criar',
     'edit' => 'editar',
+    'add' => 'adicionar',
     'back' => 'voltar',
     'cancel' => 'cancelar',
     'delete' => 'apagar',
