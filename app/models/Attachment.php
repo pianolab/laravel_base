@@ -8,7 +8,7 @@ class Attachment extends \Eloquent
 
     protected $table = 'attachments';
     protected $softDelete = true;
-    protected $fillable = [ 'is_main' ];
+    protected $fillable = [ 'is_main', 'label' ];
 
     public function unique_name()
     {

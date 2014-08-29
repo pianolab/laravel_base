@@ -3,6 +3,7 @@ var Post = {
     init: function () {
         this.validations();
         this.uploadify();
+        this.setLabel();
         this.main();
     },
 
@@ -24,6 +25,19 @@ var Post = {
                     required: true
                 }
             }
+        });
+    },
+
+    setLabel: function () {
+        $(Uploadifive.wrap).on('blur', '.attachment-label', function () {
+            var element = $(this);
+
+            Uploadifive.update( element.closest('.fields').data('id'), {
+                label: element.val()
+            })
+            .success( function (response) {
+                if (response.success) {};
+            });
         });
     },
 

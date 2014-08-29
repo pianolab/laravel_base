@@ -11,6 +11,9 @@
                 <i class="fa fa-{{ $attachment->is_main() ? 'check text-success' : 'times text-danger'}}"></i> {{ t('main') }}
             </span>
         </div>
+        <p class="fields" data-id="{{ $attachment->id }}">
+            <input type="text" class="attachment-label form-control input-xs" value="{{ $attachment->label }}" />
+        </p>
         <p class="caption">{{ $attachment->origin_name }}</p>
     </div>
 @endif
