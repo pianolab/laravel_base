@@ -5,6 +5,8 @@
 
 {{ HTML::script('javascripts/vendors/bootstrap/bootstrap.js') }}
 
+{{ HTML::script('javascripts/modules/application.js') }}
+
 {{ HTML::script('javascripts/vendors/bootstrap/bootstrap-datepicker.js') }}
 {{ HTML::script('javascripts/vendors/bootstrap/jquery.pagedown-bootstrap.combined.js') }}
 
@@ -20,4 +22,3 @@
 {{ HTML::script('javascripts/vendors/modernizr.js') }}
 
 {{ HTML::script('javascripts/modules/bootstrap.init.js') }}
-{{ HTML::script('javascripts/modules/application.js') }}

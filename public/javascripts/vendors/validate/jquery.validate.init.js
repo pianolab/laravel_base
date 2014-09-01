@@ -9,27 +9,23 @@ $.validator.setDefaults({
   ignore: [],
 
   errorPlacement: function(error, element) {
-    var icon = $('<i>', { 'class': 'fa fa-times' });
-    error.attr('data-placement', 'left').attr('data-content', error.text());
-    error.insertAfter(element).text('').html(icon).popover({ trigger: 'hover' }).popover('show');
-
-    setTimeout( function() { error.popover('hide'); }, 2000);
+    error.insertAfter(element);
   },
 
   highlight: function(element, errorClass, validClass) {
     $(element).removeClass(validClass).addClass(errorClass)
-      .closest('.control-group,.form-group')
+      .closest('div')
       .removeClass('has-success').addClass('has-error');
   },
 
   unhighlight: function(element, errorClass, validClass) {
     $(element).removeClass(errorClass).addClass(validClass)
-      .closest('.control-group,.form-group')
+      .closest('div')
       .removeClass('has-error').addClass('has-success');
   },
 
   success: function(element) {
-    $(element).addClass('valid').attr('data-content', '').html('<i class="fa fa-check" />').popover('destroy');
+    $(element).addClass('valid').html('<i class="fa fa-check"></i>');
   },
 });
 
@@ -40,12 +36,8 @@ $.validator.addMethod(
   "Invalid date. Eg: dd/mm/yyyy."
 );
 
-$(document).on('ready page:load', function () {
-  $('.form-group').on('click', '.popover', function () {
-    $(this).fadeOut();
-  });
-
+$(document).on('ready', function () {
   var input_group = $('.input-group').find('.error').siblings('.input-group-btn');
   var input_group_width = input_group.width() + parseInt(input_group.siblings('.error').css('right'));
-  input_group.siblings('.error').css({ 'right': input_group_width + 'px' });
+  input_group.siblings('.error').css({ 'right': 3 + input_group_width + 'px' });
 });
