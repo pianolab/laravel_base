@@ -36,7 +36,6 @@ class AttachmentsController extends \BaseController
         }
     }
 
-
     public function update($parent, $parent_id, $id)
     {
         $input = Input::all();
@@ -50,7 +49,6 @@ class AttachmentsController extends \BaseController
         } # endif;
     }
 
-
     public function destroy($parent, $parent_id, $id)
     {
         $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
@@ -61,5 +59,12 @@ class AttachmentsController extends \BaseController
         else {
             return App::abort(401);
         } # endif;
+    }
+
+    public function show($parent, $parent_id, $id)
+    {
+        $comment = new Comment;
+        $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
+        $this->layout->content = View::make('attachments.show')->with('attachment', $attachment)->with('comment', $comment);
     }
 }

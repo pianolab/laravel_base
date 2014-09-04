@@ -24,6 +24,7 @@
 @section('container')
     <div class="container">
         @include('layouts.messages')
+        <br />
     </div>
 
     <section class="container">

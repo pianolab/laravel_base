@@ -40,20 +40,40 @@ trait AttachmentTrait
         }
     }
 
-    public function download()
-    {
-        $target = $this->is_image() ? ' target="blank"' : null;
-        return '<a href="' . url($this->path()) . '"' . $target . ' class="btn btn-xs btn-info"><i class="fa fa-download"></i></a>';
-    }
-
     public function unique_name()
     {
         return strtolower(Str::random(8) . '-' . Str::random(4) . '-' . Str::random(4) . '-' . Str::random(4) . '-' . Str::random(12));
     }
 
+    public function download_button()
+    {
+        $target = $this->is_image() ? ' target="blank"' : null;
+        return '<a href="' . url($this->path()) . '"' . $target . ' class="btn btn-xs btn-info"><i class="fa fa-download"></i></a>';
+    }
+
+    public function comment_button()
+    {
+        return '<a href="' . $this->comment_path() . '" class="btn btn-xs btn-warning"><i class="fa fa-comments"></i></a>';
+    }
+
+    public function parent_button()
+    {
+        return '<a href="' . $this->parent_path() . '" class="btn btn-xs btn-primary show-only-show"><i class="fa fa-arrow-left"></i></a>';
+    }
+
     public function path()
     {
         return 'uploads/' . str_plural($this->parent_name) . '/' . $this->parent_id . '/' . $this->file_name;
+    }
+
+    public function parent_path()
+    {
+        return route('admin.' . str_plural($this->parent_name) . '.edit', $this->parent_id);
+    }
+
+    public function comment_path()
+    {
+        return route('attachments.show', [ str_plural($this->parent_name), $this->parent_id, $this->id ]);
     }
 
     public function is_main()

@@ -68,6 +68,11 @@ return array(
     'published at' => 'data de publicação',
     'here' => 'aqui',
 
+    # Comments
+    'comment' => 'comentário',
+    'comments' => 'comentários',
+    'type your comment...' => 'digite seu comentário...',
+
     # Posts
     'post' => 'postagem',
     'posts' => 'postagens',

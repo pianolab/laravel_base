@@ -18,6 +18,11 @@ Route::group(array('before' => 'auth.admin'), function () {
         ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
     Route::delete('{parent}/{id}/attachments/{attachments}/destroy', [ 'as' => 'attachments.destroy', 'uses' => 'AttachmentsController@destroy' ])
         ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
+    Route::get('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.show', 'uses' => 'AttachmentsController@show' ])
+        ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
+
+    # Comments upload
+    Route::post('comments', 'CommentsController@store');
 
     # Administration name space
     Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function () {
