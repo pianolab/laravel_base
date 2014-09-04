@@ -4,7 +4,7 @@
 
 @section('content')
 <div id="new-attachments" class="row form-group">
-    @include('attachments.member', [ 'attachment' => $attachment ])
+    @include('attachments.member', [ 'attachment' => $attachment, 'download_button' => true, 'parent_route' => 'admin.posts.edit' ])
 
     <div class="col-lg-9 col-md-8 col-xs-6">
         <div class="row">

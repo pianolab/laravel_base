@@ -6,8 +6,6 @@ var Uploadifive = {
     init: function () {
         this.destroy();
         this.show_actions();
-        this.hide_only_show();
-        this.show_only_show();
     },
 
     show_actions: function () {
@@ -19,18 +17,6 @@ var Uploadifive = {
         .on('mouseleave', '.attachment', function () {
             $(this).find('.actions').hide(); // fadeOut
         });
-    },
-
-    hide_only_show: function() {
-        if ($(this.selector).length == 0) {
-            $('.hide-only-show').remove();
-        };
-    },
-
-    show_only_show: function() {
-        if ($(this.selector).length != 0) {
-            $('.show-only-show').remove();
-        };
     },
 
     hide_button: function() {

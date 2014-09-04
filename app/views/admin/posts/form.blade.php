@@ -33,7 +33,8 @@
         <div id="new-attachments" class="row form-group">
             @if ($post->images)
             @foreach ($post->images as $key => $attachment)
-                @include('attachments.member', [ 'attachment' => $attachment ])
+                @include('attachments.member', [ 'attachment' => $attachment, 'remove' => true, 'download_button' => true,
+                    'comment_button' => true, 'main' => true, 'label' => true, 'parent_route' => false ])
             @endforeach
             @endif
         </div>

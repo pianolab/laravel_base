@@ -56,9 +56,11 @@ trait AttachmentTrait
         return '<a href="' . $this->comment_path() . '" class="btn btn-xs btn-warning"><i class="fa fa-comments"></i></a>';
     }
 
-    public function parent_button()
+    public function parent_button($parent_route = false)
     {
-        return '<a href="' . $this->parent_path() . '" class="btn btn-xs btn-primary show-only-show"><i class="fa fa-arrow-left"></i></a>';
+        if ($parent_route) {
+            return '<a href="' . $this->parent_path($parent_route) . '" class="btn btn-xs btn-primary"><i class="fa fa-arrow-left"></i></a>';
+        }
     }
 
     public function path()
@@ -66,9 +68,10 @@ trait AttachmentTrait
         return 'uploads/' . str_plural($this->parent_name) . '/' . $this->parent_id . '/' . $this->file_name;
     }
 
-    public function parent_path()
+    public function parent_path($parent_route = false)
     {
-        return route('admin.' . str_plural($this->parent_name) . '.edit', $this->parent_id);
+        $parent_route = $parent_route ? $parent_route : 'admin.' . str_plural($this->parent_name) . '.edit';
+        return route($parent_route, $this->parent_id);
     }
 
     public function comment_path()
