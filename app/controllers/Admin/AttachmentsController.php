@@ -12,7 +12,7 @@ class AttachmentsController extends BaseController
     public function index()
     {
         $attachments = $this->attachment->all();
-        $this->layout->content = \View::make('admin.attachments.create')->with('attachments', $attachments);
+        $this->layout->content = \View::make('admin.attachments.index')->with('attachments', $attachments);
     }
 
     public function store()

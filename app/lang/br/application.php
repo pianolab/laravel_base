@@ -55,6 +55,15 @@ return array(
     'cancel' => 'cancelar',
     'delete' => 'apagar',
     'loading' => 'carregando',
+    'view' => 'ver',
+
+    # Attachments
+    'attachment' => 'arquivo',
+    'No attachments found' => 'Nenhum arquivo encontrado',
+    'attachments' => 'arquivos',
+    'created at' => 'criado em',
+    'file name' => 'nome do arquivo',
+    'parent name' => 'Nome do modulo',
 
     # Authentication
     'authentication' => 'autenticação',

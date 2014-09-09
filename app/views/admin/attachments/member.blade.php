@@ -10,9 +10,9 @@
 
                 {{ $attachment->comment_button() }}
 
-                    <span class="attachment-main btn btn-xs btn-default" data-current-value="{{ $attachment->is_main() }}">
-                        <i class="fa fa-{{ $attachment->is_main() ? 'check text-success' : 'times text-danger'}}"></i> {{ t('main') }}
-                    </span>
+                <span class="attachment-main btn btn-xs btn-default" data-current-value="{{ $attachment->is_main() }}">
+                    <i class="fa fa-{{ $attachment->is_main() ? 'check text-success' : 'times text-danger'}}"></i> {{ t('main') }}
+                </span>
             </div>
             <p class="fields" data-id="{{ $attachment->id }}">
                 <input type="text" class="attachment-label form-control input-xs" value="{{ $attachment->label }}" />

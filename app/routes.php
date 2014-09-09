@@ -17,6 +17,9 @@ Route::group(array('before' => 'auth.admin'), function () {
 
     # Administration name space
     Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function () {
+        # Attachments all
+        Route::get('attachments', 'AttachmentsController@index');
+
         # Attachments upload
         Route::post('attachments', 'AttachmentsController@store');
 

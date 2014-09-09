@@ -3,6 +3,19 @@
 @stop
 
 @section('content')
+<div class="row">
+    <div class="col-md-8">
+        <h3>{{ _t('attachments') }} <small>{{ t('view') }}</small></h3>
+    </div>
+    <div class="col-md-4 text-right"> <br>
+        <a href="{{ url('admin/attachments') }}" class="btn btn-info">
+            <i class="fa fa-arrow-left"></i> {{ t('see all') }}
+        </a>
+    </div>
+</div>
+
+<hr />
+
 <div id="new-attachments" class="row form-group">
     <div class="uploadifive onshow" data-parent-id="{{ $attachment->parent_id }}" data-parent-name="{{ $attachment->parent_name }}"></div>
     @include('admin.attachments.member', [ 'attachment' => $attachment ])

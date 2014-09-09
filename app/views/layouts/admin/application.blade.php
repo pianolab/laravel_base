@@ -32,6 +32,14 @@
           <ul class="nav navbar-nav">
             <li>{{ link_to('/admin', _t('dashboard')) }}</li>
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _t('attachments') }} <i class="fa fa-angle-down"></i></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">{{ _t('attachments') }}</li>
+                <li>{{ link_to('/admin/attachments', t('see all')) }}</li>
+                <li class="divider"></li>
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ _t('posts') }} <i class="fa fa-angle-down"></i></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">{{ _t('posts') }}</li>
