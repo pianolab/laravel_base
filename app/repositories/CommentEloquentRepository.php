@@ -8,9 +8,4 @@ class CommentEloquentRepository extends BaseRepository
     {
         parent::__construct($comment, $validator);
     }
-
-    public function init($attributes = [])
-    {
-        return new \Comment($attributes);
-    }
 }

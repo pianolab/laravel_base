@@ -8,9 +8,4 @@ class PostEloquentRepository extends BaseRepository
     {
         parent::__construct($post, $validator);
     }
-
-    public function init($attributes = [])
-    {
-        return new \Post($attributes);
-    }
 }
