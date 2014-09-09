@@ -7,8 +7,6 @@ class BaseValidator extends \Validator
 
     protected function validate($data, $rules)
     {
-        $return = false;
-
         $validator = self::make($data, $rules);
 
         $this->success = $validator->passes();
@@ -28,5 +26,25 @@ class BaseValidator extends \Validator
     {
         $this->success = $success;
         $this->message = $message;
+    }
+
+    protected function main($data, $id = false)
+    {
+        return $this->validate($data, []);
+    }
+
+    public function store($data)
+    {
+        return $this->main($data);
+    }
+
+    public function update($data, $id)
+    {
+        return $this->main($data, $id);
+    }
+
+    public function destroy()
+    {
+        return parent::validate([], []);
     }
 }

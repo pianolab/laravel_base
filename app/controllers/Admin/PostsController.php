@@ -25,11 +25,11 @@ class PostsController extends BaseController
     {
         $created = $this->post->store(\Input::except('_method', '_token'));
 
-        if ($created->success()) {
-            return \Redirect::route('admin.posts.edit', $created->id)->with('success', $created->message);
+        if ($created->validator->success()) {
+            return \Redirect::route('admin.posts.edit', $created->model->id)->with('success', $created->validator->message);
         }
         else {
-            return \Redirect::back()->withErrors($created->errors)->withInput();
+            return \Redirect::back()->withErrors($created->validator->errors)->withInput();
         } # endif;
     }
 
@@ -43,11 +43,11 @@ class PostsController extends BaseController
     {
         $updated = $this->post->update($id, \Input::except('_method', '_token'));
 
-        if ($updated->success()) {
-            return \Redirect::route('admin.posts.index')->with('success', $updated->message);
+        if ($updated->validator->success()) {
+            return \Redirect::route('admin.posts.index')->with('success', $updated->validator->message);
         }
         else {
-            return \Redirect::back()->withErrors($updated->errors)->withInput();
+            return \Redirect::back()->withErrors($updated->validator->errors)->withInput();
         } # endif;
     }
 
@@ -55,11 +55,11 @@ class PostsController extends BaseController
     {
         $destroyed = $this->post->destroy($id);
 
-        if ($destroyed->success()) {
-            return \Redirect::route('admin.posts.index')->with('success', $destroyed->message);
+        if ($destroyed->validator->success()) {
+            return \Redirect::route('admin.posts.index')->with('success', $destroyed->validator->message);
         }
         else {
-            return \Redirect::back()->with('danger', $destroyed->message);
+            return \Redirect::back()->with('danger', $destroyed->validator->message);
         } # endif;
     }
 }

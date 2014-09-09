@@ -2,10 +2,10 @@
 
 class PostValidator extends \BaseValidator
 {
-    public function main($data, $id = false)
-    {
-        $return = false;
+    public $my_name = 'Post';
 
+    protected function main($data, $id = false)
+    {
         $rules = [
             'title' => 'required|max:255|unique:posts,title,' . ($id ?: 'NULL') . ',id,deleted_at,NULL',
             'content' => 'required',

@@ -2,8 +2,19 @@
 
 namespace Admin;
 
-class AttachmentsController extends \BaseController
+class AttachmentsController extends BaseController
 {
+    public function __construct(\AttachmentEloquentRepository $attachment)
+    {
+        $this->attachment = $attachment;
+    }
+
+    public function index()
+    {
+        $attachments = $this->attachment->all();
+        $this->layout->content = \View::make('admin.attachments.create')->with('attachments', $attachments);
+    }
+
     public function store()
     {
         $this->setLayout('layouts.blank');

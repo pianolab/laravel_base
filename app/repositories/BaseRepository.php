@@ -2,7 +2,8 @@
 
 class BaseRepository implements RepositoryInterface
 {
-    public $MY_NAME = 'data';
+    public $my_name = 'Dados';
+    public $perpage = 30;
 
     public function __construct(\Eloquent $model, \BaseValidator $validator)
     {
@@ -10,9 +11,15 @@ class BaseRepository implements RepositoryInterface
         $this->validator = $validator;
     }
 
-    public function all($perpage = 15)
+    public function init($attributes = [])
     {
-        return $this->model->paginate($perpage);
+        $class_name = get_class($this->model);
+        return new $class_name($attributes);
+    }
+
+    public function all()
+    {
+        return $this->model->paginate($this->perpage);
     }
 
     public function find($id)
@@ -22,57 +29,64 @@ class BaseRepository implements RepositoryInterface
 
     public function store($data)
     {
-        $validator = $this->validator->main($data);
+        $validator = $this->validator->store($data);
 
         if ($validator->success()) {
-            $model = $this->model->create($data);
-            if ($model) {
-                $validator->id = $model->id;
-                $validator->message( true, _t('created_success', [ 'module' => t($this->MY_NAME) ]) );
+            $this->model = $this->init($data);
+
+            if ($this->model->save()) {
+                $validator->message( true, t('created_success', [ 'module' => _t($this->my_name) ]) );
             }
             else {
-                $validator->message( false, _t('created_error', [ 'module' => t($this->MY_NAME) ]) );
+                $validator->message( false, t('created_error', [ 'module' => _t($this->my_name) ]) );
             } # endif;
         }
         else {
-            $validator->message( false, _t('created_error', [ 'module' => t($this->MY_NAME) ]) );
+            $validator->message( false, t('created_error', [ 'module' => _t($this->my_name) ]) );
         } # endif;
 
-        return $validator;
+        return $this;
     }
 
     public function update($id, $data)
     {
-        $validator = $this->validator->main($data, $id);
+        $validator = $this->validator->update($data, $id);
 
         if ($validator->success()) {
-            $model = $this->find($id);
+            $this->model = $this->find($id);
 
-            if ($model->update($data)) {
-                $validator->message( true, _t('updated_success', [ 'module' => t($this->MY_NAME) ]) );
+            if ($this->model->update($data)) {
+                $validator->message( true, t('updated_success', [ 'module' => _t($this->my_name) ]) );
             }
             else {
-                $validator->message( false, _t('updated_error', [ 'module' => t($this->MY_NAME) ]) );
+                $validator->message( false, t('updated_error', [ 'module' => _t($this->my_name) ]) );
             } # endif;
         }
         else {
-            $validator->message( false, _t('updated_error', [ 'module' => t($this->MY_NAME) ]) );
+            $validator->message( false, t('updated_error', [ 'module' => _t($this->my_name) ]) );
         } # endif;
 
-        return $validator;
+        return $this;
     }
 
     public function destroy($id)
     {
-        $validator = $this->validator;
+        $validator = $this->validator->destroy();
 
-        if ($this->model->find($id)->delete()) {
-            $validator->message( true, _t('deleted_success', [ 'module' => t($this->MY_NAME) ]) );
+        if ($validator->success()) {
+            $this->model = $this->find($id);
+
+            if ($this->model->delete()) {
+                $validator->message( true, t('deleted_success', [ 'module' => _t($this->my_name) ]) );
+            }
+            else {
+                $validator->message( false, t('deleted_error', [ 'module' => _t($this->my_name) ]) );
+            } # endif;
         }
         else {
-            $validator->message( false, _t('deleted_error', [ 'module' => t($this->MY_NAME) ]) );
+            $validator->message( false, t('updated_error', [ 'module' => _t($this->my_name) ]) );
         } # endif;
 
-        return $validator;
+        return $this;
     }
 }
