@@ -12,20 +12,26 @@
 */
 # Routes before authentication
 Route::group(array('before' => 'auth.admin'), function () {
-    # Attachments upload
-    Route::post('attachments', 'AttachmentsController@create');
-    Route::put('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.update', 'uses' => 'AttachmentsController@update' ])
-        ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
-    Route::delete('{parent}/{id}/attachments/{attachments}/destroy', [ 'as' => 'attachments.destroy', 'uses' => 'AttachmentsController@destroy' ])
-        ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
-    Route::get('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.show', 'uses' => 'AttachmentsController@show' ])
-        ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
-
     # Comments upload
     Route::post('comments', 'CommentsController@store');
 
     # Administration name space
     Route::group(array('namespace' => 'Admin', 'prefix' => 'admin'), function () {
+        # Attachments upload
+        Route::post('attachments', 'AttachmentsController@store');
+
+        # Attachments update
+        Route::put('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.update', 'uses' => 'AttachmentsController@update' ])
+            ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
+
+        # Attachments remove
+        Route::delete('{parent}/{id}/attachments/{attachments}/destroy', [ 'as' => 'attachments.destroy', 'uses' => 'AttachmentsController@destroy' ])
+            ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
+
+        # Attachments show
+        Route::get('{parent}/{id}/attachments/{attachments}', [ 'as' => 'attachments.show', 'uses' => 'AttachmentsController@show' ])
+            ->where('id', '[0-9]+')->where('attachments', '[0-9]+');
+
         # Dashboard administration
         Route::get('/', 'DashboardController@index');
 

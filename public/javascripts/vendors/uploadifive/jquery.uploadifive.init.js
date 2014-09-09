@@ -35,7 +35,7 @@ var Uploadifive = {
             auto: true,
             debug: false,
             multi: true,
-            uploadScript: base_url + 'attachments',
+            uploadScript: base_url + 'admin/attachments',
             buttonText: _t(element.data('text')) || _t('choose files') + '...',
             buttonClass: element.data('class') || 'btn btn-success',
             formData: {
@@ -70,7 +70,7 @@ var Uploadifive = {
 
     update: function (id, ajaxData) {
         element = $(this.selector);
-        request_url = element.data('parent-name') + '/' +
+        request_url = 'admin/' + element.data('parent-name') + '/' +
             element.data('parent-id') + '/attachments/' + id;
 
         Application.show_loading();
@@ -93,7 +93,7 @@ var Uploadifive = {
             confirmation = confirm( t('confirm_remove_image', [ [ ':image', attachment.siblings('.caption').text() ] ]) );
 
             if (confirmation) {
-                request_url = element.data('parent-name') + '/' + element.data('parent-id') +
+                request_url = 'admin/' + element.data('parent-name') + '/' + element.data('parent-id') +
                     '/attachments/' + attachment.data('id') + '/destroy';
 
                 Application.show_loading();

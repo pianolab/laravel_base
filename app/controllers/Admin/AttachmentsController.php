@@ -1,18 +1,20 @@
 <?php
 
+namespace Admin;
+
 class AttachmentsController extends \BaseController
 {
-    public function create()
+    public function store()
     {
         $this->setLayout('layouts.blank');
 
-        if (Input::hasFile('Filedata')) {
-            $file = Input::file('Filedata');
+        if (\Input::hasFile('Filedata')) {
+            $file = \Input::file('Filedata');
 
-            $folder = Input::get('parent_name');
+            $folder = \Input::get('parent_name');
 
-            $attachment = new Attachment();
-            $attachment->parent_id = Input::get('parent_id');
+            $attachment = new \Attachment();
+            $attachment->parent_id = \Input::get('parent_id');
             $attachment->parent_name = str_singular( $folder );
             $attachment->origin_name = $file->getClientOriginalName();
             $attachment->type = $file->getMimeType();
@@ -25,7 +27,7 @@ class AttachmentsController extends \BaseController
 
             if ($is_upload) {
                 $attachment->save();
-                $this->layout->content = View::make('attachments.create')->with('attachment', $attachment);
+                $this->layout->content = \View::make('admin.attachments.create')->with('attachment', $attachment);
             }
             else {
                 return App::abort(401);
@@ -38,8 +40,8 @@ class AttachmentsController extends \BaseController
 
     public function update($parent, $parent_id, $id)
     {
-        $input = Input::all();
-        $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
+        $input = \Input::all();
+        $attachment = \Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
 
         if ($attachment->update($input)) {
             return [ 'success' => true, 'attachment_is_main' => $attachment->is_main ];
@@ -51,7 +53,7 @@ class AttachmentsController extends \BaseController
 
     public function destroy($parent, $parent_id, $id)
     {
-        $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
+        $attachment = \Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
 
         if ($attachment->delete()) {
             return [ 'success' => true, 'message' => t('File was successfully removed') ];
@@ -63,8 +65,8 @@ class AttachmentsController extends \BaseController
 
     public function show($parent, $parent_id, $id)
     {
-        $comment = new Comment;
-        $attachment = Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
-        $this->layout->content = View::make('attachments.show')->with('attachment', $attachment)->with('comment', $comment);
+        $comment = new \Comment;
+        $attachment = \Attachment::where('parent_name', str_singular($parent))->where('parent_id', $parent_id)->find($id);
+        $this->layout->content = \View::make('admin.attachments.show')->with('attachment', $attachment)->with('comment', $comment);
     }
 }

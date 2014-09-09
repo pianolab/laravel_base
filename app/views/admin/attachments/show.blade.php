@@ -4,7 +4,8 @@
 
 @section('content')
 <div id="new-attachments" class="row form-group">
-    @include('attachments.member', [ 'attachment' => $attachment, 'download_button' => true, 'parent_route' => 'admin.posts.edit' ])
+    <div class="uploadifive onshow" data-parent-id="{{ $attachment->parent_id }}" data-parent-name="{{ $attachment->parent_name }}"></div>
+    @include('admin.attachments.member', [ 'attachment' => $attachment ])
 
     <div class="col-lg-9 col-md-8 col-xs-6">
         <div class="row">
@@ -21,6 +22,7 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             {{ Form::submit(t('submit_new', [ 'model' => _t('comment') ]), [ 'class' => 'btn btn-primary' ]) }}
+                            {{ link_to('/admin/' . str_plural($attachment->parent_name) . '/' . $attachment->parent_id . '/edit', t('back')) }}
                         </div>
                     </div>
                 {{ Form::close() }}
